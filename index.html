@@ -712,6 +712,83 @@
     color: var(--text-muted);
   }
 
+  /* Related publications inside project cards */
+  .project-pubs{
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--border-strong);
+  }
+  .project-pubs-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--heat-red);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .project-pubs-label::before{
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 2px;
+    background: var(--heat-gradient);
+    border-radius: 1px;
+  }
+  .project-pubs ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .project-pubs ul li{
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    padding-left: 14px;
+    position: relative;
+  }
+  .project-pubs ul li::before{
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--heat-orange);
+    font-weight: 600;
+  }
+  .project-pubs ul li a{
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .project-pubs ul li a:hover{
+    color: var(--heat-red);
+    text-decoration: underline;
+    text-decoration-color: var(--heat-orange);
+    text-underline-offset: 3px;
+  }
+  .project-pubs-empty{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    padding-left: 14px;
+    position: relative;
+  }
+  .project-pubs-empty::before{
+    content: '◌';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--text-muted);
+  }
+
   .project-figure{
     background: var(--surface-2);
     border: 1px solid var(--border);
@@ -1091,7 +1168,7 @@
       <div class="bio-text">
         <p>I am an Assistant Professor in the Department of Mechanical Engineering at Kyung Hee University. My research lies at the intersection of heat transfer, materials engineering, and system design, with a focus on managing transient and high heat-flux conditions in modern thermal systems.</p>
         <p>My work explores the integration of phase change materials (PCMs) into cooling architectures to address dynamic thermal loads that cannot be effectively managed by conventional steady-state approaches. I am particularly interested in bridging the gap between material behavior and system-level performance, enabling scalable and reliable thermal solutions for high-power electronics, data centers, and HVAC applications.</p>
-        <p>Prior to joining Kyung Hee University, I was a postdoctoral researcher at Texas A&amp;M University with Prof. Patrick J. Shamberger, working on salt-hydrate eutectic-based energy storage (DOE BENEFIT) and barocaloric plastic crystal cooling systems (ONR). I received my Ph.D. in Mechanical Science &amp; Engineering from the University of Illinois at Urbana-Champaign, co-advised by Prof. William P. King and Prof. Nenad Miljkovic, and my B.S. in Mechanical Engineering from Korea University.</p>
+        <p>Prior to joining Kyung Hee University, I was a postdoctoral researcher at Texas A&amp;M University with Prof. Patrick J. Shamberger, working on salt-hydrate eutectic-graphite foam composite PCMs (DOE BENEFIT) and barocaloric plastic crystal cooling systems (ONR). I received my Ph.D. in Mechanical Science &amp; Engineering from the University of Illinois at Urbana-Champaign, co-advised by Prof. William P. King and Prof. Nenad Miljkovic, and my B.S. in Mechanical Engineering from Korea University.</p>
 
         <div class="timeline-wrap">
           <h3>Education &amp; Experience</h3>
@@ -1199,6 +1276,17 @@
               <span class="project-tag">surrogate-model</span>
               <span class="project-tag">Bayesian-optimization</span>
             </div>
+
+            <div class="project-pubs">
+              <div class="project-pubs-label">Related Publications</div>
+              <ul>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:mS4qin7VKjkC" target="_blank" rel="noopener">Phase change material integrated cooling for transient thermal management of electronic devices</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:RgMnzfD6kpIC" target="_blank" rel="noopener">Optimal phase change material integration strategies for maximizing electronic device reliability</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:gI9wzKcniAoC" target="_blank" rel="noopener">Gaussian process optimization of phase change material heat sink design</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:bxPAEoiBajcC" target="_blank" rel="noopener">Heat transfer coefficient effect on thermal impedance of phase change composites</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:G7txJ4jiatkC" target="_blank" rel="noopener">Fabrication and thermal properties of a gallium and porous foam composite phase change material</a></li>
+              </ul>
+            </div>
           </div>
           <div class="project-figure">
             <img src="research-2.png" alt="Multi-fidelity framework: physics-based ROM, ML surrogate, and design optimization"/>
@@ -1249,6 +1337,11 @@
               <span class="project-tag">PCM</span>
               <span class="project-tag">liquid-cooling</span>
               <span class="project-tag">hybrid</span>
+            </div>
+
+            <div class="project-pubs">
+              <div class="project-pubs-label">Related Publications</div>
+              <div class="project-pubs-empty">In preparation</div>
             </div>
           </div>
           <div class="project-figure">
@@ -1301,6 +1394,18 @@
               <span class="project-tag">close-contact-melting</span>
               <span class="project-tag">high-power</span>
             </div>
+
+            <div class="project-pubs">
+              <div class="project-pubs-label">Related Publications</div>
+              <ul>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:djft3U1LymYC" target="_blank" rel="noopener">Cooling high power electronics using dynamic phase change material</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:Amrzk_ktLr0C" target="_blank" rel="noopener">Dynamic phase change materials with extended surfaces</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:PazO6pb-sMwC" target="_blank" rel="noopener">Fundamental limits of dynamic phase change materials</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:-ZoC36zw86wC" target="_blank" rel="noopener">A "hourglass" system for transient thermal management based on dynamic close-contact melting of a phase-change material</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:0urtJCGzaFQC" target="_blank" rel="noopener">High power transient thermal management with dynamic phase change material and liquid cooling</a></li>
+                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-PKWrsMAAAAJ&citation_for_view=-PKWrsMAAAAJ:ZpgFv6i7Z4gC" target="_blank" rel="noopener">Analysis of dynamic phase change materials</a></li>
+              </ul>
+            </div>
           </div>
           <div class="project-figure">
             <img src="research-3.png" alt="Conventional PCM vs dynPCM cooling comparison and performance"/>
@@ -1338,6 +1443,11 @@
               <span class="project-tag">solid-state</span>
               <span class="project-tag">HVAC</span>
               <span class="project-tag">refrigeration</span>
+            </div>
+
+            <div class="project-pubs">
+              <div class="project-pubs-label">Related Publications</div>
+              <div class="project-pubs-empty">In preparation</div>
             </div>
           </div>
           <div class="project-figure">
