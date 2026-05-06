@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>ATTS Lab — Advanced Transient Thermal Systems</title>
+<meta name="description" content="Advanced Transient Thermal Systems Lab at Kyung Hee University - PCM-based cooling, transient heat transfer, and data-driven thermal design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -332,6 +333,11 @@
     font-weight: 700;
     margin-bottom: 4px;
   }
+  .pi-name-kr{
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
   .pi-role{
     color: var(--text-dim);
     font-size: 13px;
@@ -363,6 +369,77 @@
     margin-bottom: 18px;
     line-height: 1.75;
   }
+
+  /* Education & Experience timeline */
+  .timeline-wrap{
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .timeline-wrap h3{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+  .timeline{
+    position: relative;
+    padding-left: 24px;
+  }
+  .timeline::before{
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--border-strong);
+  }
+  .timeline-item{
+    position: relative;
+    padding-bottom: 22px;
+  }
+  .timeline-item:last-child{ padding-bottom: 0; }
+  .timeline-item::before{
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 7px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .timeline-item.current::before{
+    background: var(--accent);
+  }
+  .timeline-period{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+  }
+  .timeline-role{
+    font-weight: 600;
+    color: var(--text);
+    font-size: 14.5px;
+    margin-bottom: 2px;
+  }
+  .timeline-place{
+    color: var(--text-dim);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .timeline-place .advisor{
+    color: var(--text-muted);
+    font-size: 12.5px;
+    display: block;
+    margin-top: 2px;
+  }
+
   .interests{
     margin-top: 32px;
     padding-top: 32px;
@@ -394,7 +471,6 @@
     background: var(--bg-elev);
   }
 
-  /* Vision card on top */
   .vision-card{
     margin-bottom: 56px;
     background: linear-gradient(135deg, var(--accent-soft), transparent);
@@ -427,7 +503,6 @@
     line-height: 1.7;
   }
 
-  /* Thrust groups */
   .thrust-group{
     margin-bottom: 64px;
   }
@@ -469,7 +544,6 @@
     line-height: 1.6;
   }
 
-  /* Project cards inside thrust groups */
   .project-list{
     display: flex;
     flex-direction: column;
@@ -602,6 +676,133 @@
     height: auto;
     display: block;
     border-radius: 6px;
+  }
+
+  /* ==================== PUBLICATIONS ==================== */
+  .pub-actions{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .pub-group{
+    margin-bottom: 48px;
+  }
+  .pub-group:last-child{ margin-bottom: 0; }
+  .pub-group-header{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .pub-group-header h3{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .pub-group-count{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .pub-list{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .pub-item{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 22px 24px;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .pub-item:hover{
+    border-color: var(--accent-strong);
+    transform: translateX(2px);
+  }
+  .pub-meta{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .pub-year{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .pub-badge{
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .pub-badge.review{
+    background: rgba(140,140,140,0.12);
+    color: var(--text-muted);
+    border: 1px solid var(--border-strong);
+  }
+  .pub-badge.editors{
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent-strong);
+  }
+  .pub-authors{
+    font-size: 14.5px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 6px;
+  }
+  .pub-authors .self{
+    color: var(--text);
+    font-weight: 600;
+  }
+  .pub-title{
+    font-size: 15.5px;
+    color: var(--text);
+    line-height: 1.55;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .pub-venue{
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  .pub-venue .venue-name{ color: var(--text-dim); font-style: italic; }
+  .pub-venue .vol{ font-style: normal; }
+  .pub-links{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pub-link{
+    padding: 4px 10px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.15s;
+  }
+  .pub-link:hover{
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-soft);
   }
 
   /* ==================== NEWS ==================== */
@@ -763,7 +964,6 @@
       <li><a href="#about">About</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#people">People</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -827,18 +1027,51 @@
           <img src="pi-photo.jpg" alt="Soonwook Kim, Principal Investigator"/>
         </div>
         <div class="pi-name">Soonwook Kim</div>
+        <div class="pi-name-kr">김순욱</div>
         <div class="pi-role">Assistant Professor<br>Principal Investigator</div>
         <div class="pi-links">
-          <a href="#" class="pi-link">Google Scholar</a>
-          <a href="#" class="pi-link">ORCID</a>
+          <a href="https://scholar.google.com/citations?user=-PKWrsMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" class="pi-link">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/soonwook-kim" target="_blank" rel="noopener" class="pi-link">LinkedIn</a>
           <a href="#" class="pi-link">CV</a>
           <a href="mailto:snookim@khu.ac.kr" class="pi-link">Email</a>
         </div>
       </aside>
       <div class="bio-text">
         <p>I am an Assistant Professor in the Department of Mechanical Engineering at Kyung Hee University. My research lies at the intersection of heat transfer, materials engineering, and system design, with a focus on managing transient and high heat-flux conditions in modern thermal systems.</p>
-        <p>My work explores the integration of phase change materials (PCMs) into cooling architectures to address dynamic thermal loads that cannot be effectively managed by conventional steady-state approaches. I am particularly interested in bridging the gap between material behavior and system-level performance, enabling scalable and reliable thermal solutions.</p>
-        <p>Prior to joining Kyung Hee University, I received my Ph.D. in Mechanical Engineering from the University of Illinois Urbana-Champaign (Co-advisors: Prof. Nenad Miljkovic &amp; Prof. William P. King), and was a postdoctoral researcher at Texas A&amp;M University (Supervisor: Prof. Patrick Shamberger).</p>
+        <p>My work explores the integration of phase change materials (PCMs) into cooling architectures to address dynamic thermal loads that cannot be effectively managed by conventional steady-state approaches. I am particularly interested in bridging the gap between material behavior and system-level performance, enabling scalable and reliable thermal solutions for high-power electronics, data centers, and HVAC applications.</p>
+        <p>Prior to joining Kyung Hee University, I was a postdoctoral researcher at Texas A&amp;M University with Prof. Patrick J. Shamberger, working on salt-hydrate eutectic-graphite foam composite PCMs (DOE BENEFIT) and barocaloric plastic crystal cooling systems (ONR). I received my Ph.D. in Mechanical Science &amp; Engineering from the University of Illinois at Urbana-Champaign, co-advised by Prof. William P. King and Prof. Nenad Miljkovic, and my B.S. in Mechanical Engineering from Korea University.</p>
+
+        <div class="timeline-wrap">
+          <h3>Education &amp; Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item current">
+              <div class="timeline-period">MAR 2026 — PRESENT</div>
+              <div class="timeline-role">Assistant Professor</div>
+              <div class="timeline-place">Kyung Hee University, Department of Mechanical Engineering</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-period">JAN 2025 — FEB 2026</div>
+              <div class="timeline-role">Postdoctoral Researcher</div>
+              <div class="timeline-place">
+                Texas A&amp;M University, Materials Science &amp; Engineering
+                <span class="advisor">Supervisor: Prof. Patrick J. Shamberger</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-period">AUG 2017 — DEC 2024</div>
+              <div class="timeline-role">Ph.D. in Mechanical Science &amp; Engineering</div>
+              <div class="timeline-place">
+                University of Illinois at Urbana-Champaign
+                <span class="advisor">Advisors: Prof. William P. King &amp; Prof. Nenad Miljkovic (2020–24); Prof. Gaurav Bahl (2017–20)</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-period">MAR 2010 — FEB 2016</div>
+              <div class="timeline-role">B.S. in Mechanical Engineering</div>
+              <div class="timeline-place">Korea University</div>
+            </div>
+          </div>
+        </div>
 
         <div class="interests">
           <h3>Research Interests</h3>
@@ -871,7 +1104,7 @@
       <p>We aim to bridge the gap between novel thermal materials and real-world system requirements, addressing rising power densities in AI data centers and next-generation high-power electronics through three interconnected research thrusts.</p>
     </div>
 
-    <!-- ============ THRUST 1: AI-enabled Thermal System Design ============ -->
+    <!-- ============ THRUST 1 ============ -->
     <div class="thrust-group">
       <div class="thrust-header">
         <div class="thrust-header-num">THRUST 01</div>
@@ -882,7 +1115,6 @@
       </div>
 
       <div class="project-list">
-        <!-- Project 2 (now first under Thrust 1) -->
         <div class="project">
           <div class="project-text">
             <div class="project-num">PROJECT 01</div>
@@ -923,7 +1155,7 @@
       </div>
     </div>
 
-    <!-- ============ THRUST 2: Next-generation Cooling Solution Development ============ -->
+    <!-- ============ THRUST 2 ============ -->
     <div class="thrust-group">
       <div class="thrust-header">
         <div class="thrust-header-num">THRUST 02</div>
@@ -934,7 +1166,6 @@
       </div>
 
       <div class="project-list">
-        <!-- Project 1 (now under Thrust 2) — figure-left for visual rhythm -->
         <div class="project figure-left">
           <div class="project-text">
             <div class="project-num">PROJECT 02</div>
@@ -975,7 +1206,7 @@
       </div>
     </div>
 
-    <!-- ============ THRUST 3: System & Packaging-level Cooling Strategy Integration ============ -->
+    <!-- ============ THRUST 3 ============ -->
     <div class="thrust-group">
       <div class="thrust-header">
         <div class="thrust-header-num">THRUST 03</div>
@@ -986,7 +1217,6 @@
       </div>
 
       <div class="project-list">
-        <!-- Project 3 -->
         <div class="project">
           <div class="project-text">
             <div class="project-num">PROJECT 03</div>
@@ -1025,7 +1255,6 @@
           </div>
         </div>
 
-        <!-- Project 4 — figure-left for visual rhythm -->
         <div class="project figure-left">
           <div class="project-text">
             <div class="project-num">PROJECT 04</div>
@@ -1069,10 +1298,256 @@
   </div>
 </section>
 
+<!-- ==================== PUBLICATIONS ==================== -->
+<section id="publications">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">// 03 — Publications</div>
+      <h2>Peer-reviewed publications.</h2>
+      <p class="section-lead">Selected journal articles in heat transfer, phase change materials, and integrated photonics. For the most up-to-date list and citation metrics, please visit Google Scholar.</p>
+    </div>
+
+    <div class="pub-actions">
+      <a href="https://scholar.google.com/citations?user=-PKWrsMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" class="btn btn-primary">Google Scholar →</a>
+      <a href="#" class="btn btn-ghost">Download CV</a>
+    </div>
+
+    <!-- 2026 -->
+    <div class="pub-group">
+      <div class="pub-group-header">
+        <h3>2026</h3>
+        <span class="pub-group-count">3 papers</span>
+      </div>
+      <div class="pub-list">
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2026</span>
+          </div>
+          <div class="pub-authors">
+            L. Oelkers, <span class="self">S. Kim</span>, R. McAfee, A. Wilson, M. Fish, P. Shamberger
+          </div>
+          <div class="pub-title">Heat Transfer Coefficient Effect on Thermal Impedance of Phase Change Composites</div>
+          <div class="pub-venue"><span class="venue-name">International Journal of Heat and Mass Transfer</span>, <span class="vol">261, 128493</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2026.128493" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2026</span>
+          </div>
+          <div class="pub-authors">
+            S. Tsai, L. Cheng, A. Albazroun, Q. Wang, J. Kim, A. Tekinalp, <span class="self">S. Kim</span>, C. Simcox, R. Downing, V. Sivaramakrishnan, G. Carsello, M. Bimrose, W. Eom, W. P. King, M. Gazzola, S. Tawfick
+          </div>
+          <div class="pub-title">Hierarchical Artificial Muscle with Nonlinear Elasticity for Antagonistic and Cyclic Robotics</div>
+          <div class="pub-venue"><span class="venue-name">Advanced Science</span>, <span class="vol">e21604</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1002/advs.202521604" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2026</span>
+          </div>
+          <div class="pub-authors">
+            V. S. Garimella, W. Fu, R. A. Stavins, <span class="self">S. Kim</span>, T. Shockner, E. Koronio, D. Sahray, I. Salman, V. Fu, G. Ziskind, W. P. King, N. Miljkovic
+          </div>
+          <div class="pub-title">Analysis of Dynamic Phase Change Materials</div>
+          <div class="pub-venue"><span class="venue-name">International Journal of Heat and Mass Transfer</span>, <span class="vol">262, 128507</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2026.128507" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2025 -->
+    <div class="pub-group">
+      <div class="pub-group-header">
+        <h3>2025</h3>
+        <span class="pub-group-count">4 papers</span>
+      </div>
+      <div class="pub-list">
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2025</span>
+          </div>
+          <div class="pub-authors">
+            <span class="self">S. Kim</span>, R. A. Stavins, E. Shoham, G. Ziskind, N. Miljkovic, W. P. King
+          </div>
+          <div class="pub-title">High Power Transient Thermal Management with Dynamic Phase Change Material and Liquid Cooling</div>
+          <div class="pub-venue"><span class="venue-name">International Journal of Heat and Mass Transfer</span>, <span class="vol">246, 126998</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2025.126998" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2025</span>
+          </div>
+          <div class="pub-authors">
+            I. Salman, T. Shockner, R. A. Stavins, T. Shockner, <span class="self">S. Kim</span>, E. Koronio, O. Gal, W. P. King, N. Miljkovic, G. Ziskind
+          </div>
+          <div class="pub-title">A "Hourglass" System for Transient Thermal Management Based on Dynamic Close-Contact Melting of a Phase-Change Material</div>
+          <div class="pub-venue"><span class="venue-name">International Journal of Heat and Mass Transfer</span>, <span class="vol">239, 126542</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2024.126542" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2025</span>
+          </div>
+          <div class="pub-authors">
+            <span class="self">S. Kim</span>, H. Kim, W. P. King, N. Miljkovic
+          </div>
+          <div class="pub-title">Optimal Phase Change Material Integration Strategies for Maximizing Electronic Device Reliability</div>
+          <div class="pub-venue"><span class="venue-name">Applied Thermal Engineering</span>, <span class="vol">267, 125736</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.applthermaleng.2025.125736" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2025</span>
+          </div>
+          <div class="pub-authors">
+            <span class="self">S. Kim</span>, R. A. Stavins, V. S. Garimella, E. Koronio, T. Shockner, G. Ziskind, N. Miljkovic, W. P. King
+          </div>
+          <div class="pub-title">Cooling High Power Electronics Using Dynamic Phase Change Material</div>
+          <div class="pub-venue"><span class="venue-name">International Journal of Heat and Mass Transfer</span>, <span class="vol">237, 126433</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2024.126433" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="pub-group">
+      <div class="pub-group-header">
+        <h3>2024</h3>
+        <span class="pub-group-count">2 papers</span>
+      </div>
+      <div class="pub-list">
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2024</span>
+            <span class="pub-badge editors">Editor's Pick</span>
+          </div>
+          <div class="pub-authors">
+            R. A. Stavins, <span class="self">S. Kim</span>, A. Meddling, V. S. Garimella, E. Koronio, T. Shockner, G. Ziskind, N. Miljkovic, W. P. King
+          </div>
+          <div class="pub-title">Dynamic Phase Change Materials with Extended Surfaces</div>
+          <div class="pub-venue"><span class="venue-name">Applied Physics Letters</span>, <span class="vol">125(6)</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1063/5.0217531" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2024</span>
+          </div>
+          <div class="pub-authors">
+            V. Garimella, W. Fu, R. Stavins, <span class="self">S. Kim</span>, T. Shockner, E. Koronio, G. Ziskind, W. P. King, N. Miljkovic
+          </div>
+          <div class="pub-title">Fundamental Limits of Dynamic Phase Change Materials</div>
+          <div class="pub-venue"><span class="venue-name">Applied Physics Letters</span>, <span class="vol">124(12)</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1063/5.0190273" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="pub-group">
+      <div class="pub-group-header">
+        <h3>2023</h3>
+        <span class="pub-group-count">3 papers</span>
+      </div>
+      <div class="pub-list">
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2023</span>
+          </div>
+          <div class="pub-authors">
+            R. McAfee, M. Fish, A. Wilson, H. Tsang, J. Boltersdorf, <span class="self">S. Kim</span>, W. P. King, N. Miljkovic
+          </div>
+          <div class="pub-title">Fabrication and Thermal Properties of a Gallium and Porous Foam Composite Phase Change Material</div>
+          <div class="pub-venue"><span class="venue-name">ACS Applied Engineering Materials</span>, <span class="vol">1(11), 2847–2857</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1021/acsaenm.3c00366" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2023</span>
+          </div>
+          <div class="pub-authors">
+            <span class="self">S. Kim</span>, H. Kim, W. P. King, N. Miljkovic
+          </div>
+          <div class="pub-title">Gaussian Process Optimization of Phase Change Material Heat Sink Design</div>
+          <div class="pub-venue"><span class="venue-name">Numerical Heat Transfer, Part B: Fundamentals</span>, <span class="vol">85(12), 1767–1785</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1080/10407790.2023.2273513" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2023</span>
+          </div>
+          <div class="pub-authors">
+            <span class="self">S. Kim</span>, T. Yang, N. Miljkovic, W. P. King
+          </div>
+          <div class="pub-title">Phase Change Material Integrated Cooling for Transient Thermal Management of Electronic Devices</div>
+          <div class="pub-venue"><span class="venue-name">International Journal of Heat and Mass Transfer</span>, <span class="vol">213, 124263</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.ijheatmasstransfer.2023.124263" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="pub-group">
+      <div class="pub-group-header">
+        <h3>2021</h3>
+        <span class="pub-group-count">1 paper</span>
+      </div>
+      <div class="pub-list">
+        <div class="pub-item">
+          <div class="pub-meta">
+            <span class="pub-year">2021</span>
+            <span class="pub-badge editors">Editor's Pick</span>
+          </div>
+          <div class="pub-authors">
+            <span class="self">S. Kim</span>, D. B. Sohn, C. W. Peterson, G. Bahl
+          </div>
+          <div class="pub-title">On-Chip Optical Non-Reciprocity through a Synthetic Hall Effect for Photons</div>
+          <div class="pub-venue"><span class="venue-name">APL Photonics</span>, <span class="vol">6(1)</span></div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1063/5.0034291" target="_blank" rel="noopener" class="pub-link">DOI</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="news">
   <div class="container">
     <div class="section-header">
-      <div class="eyebrow">// 03 — Recent</div>
+      <div class="eyebrow">// 04 — Recent</div>
       <h2>Lab news &amp; updates.</h2>
     </div>
     <div class="news-list">
@@ -1092,7 +1567,7 @@
 
 <section id="join" class="join-section">
   <div class="join-card">
-    <div class="eyebrow">// 04 — Join Us</div>
+    <div class="eyebrow">// 05 — Join Us</div>
     <h2>Build the future of thermal systems with us.</h2>
     <p>We're actively recruiting motivated M.S. students (2027 spring/fall) and undergraduate researchers passionate about heat transfer, materials, and computational modeling. All four research projects are available as thesis topics.</p>
     <div class="opportunities">
@@ -1118,16 +1593,16 @@
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#publications">Publications</a></li>
-        <li><a href="#people">People</a></li>
+        <li><a href="#news">News</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Connect</h4>
       <ul>
         <li><a href="mailto:snookim@khu.ac.kr">snookim@khu.ac.kr</a></li>
-        <li><a href="#">Google Scholar</a></li>
+        <li><a href="https://scholar.google.com/citations?user=-PKWrsMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a></li>
+        <li><a href="https://www.linkedin.com/in/soonwook-kim" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="#">ORCID</a></li>
-        <li><a href="#">LinkedIn</a></li>
       </ul>
     </div>
     <div class="footer-col">
