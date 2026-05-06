@@ -215,7 +215,6 @@
     color: var(--accent);
   }
 
-  /* Hero visual: research thrust diagram image */
   .hero-visual{
     position: relative;
     width: 100%;
@@ -318,13 +317,14 @@
     background: var(--surface-2);
     border: 1px solid var(--border);
     margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 56px;
-    font-weight: 600;
-    color: var(--accent);
+    overflow: hidden;
+  }
+  .pi-photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
   .pi-name{
     font-family: 'Space Grotesk', sans-serif;
@@ -389,92 +389,14 @@
     color: var(--accent);
   }
 
+  /* ==================== RESEARCH SECTION ==================== */
   .research-section{
     background: var(--bg-elev);
   }
-  /* New 3-thrust grid: hero card on top + 2 cards below */
-  .thrust-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .thrust-grid .thrust-hero{
-    grid-column: 1 / -1;
-  }
-  .thrust{
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 32px;
-    position: relative;
-    transition: all 0.25s;
-  }
-  .thrust:hover{
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(217,72,15,0.08);
-  }
-  .thrust::before{
-    content: '';
-    position: absolute;
-    top: 0; left: 24px; right: 24px;
-    height: 2px;
-    background: var(--accent);
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-  .thrust:hover::before{ opacity: 1; }
 
-  .thrust-num{
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-    letter-spacing: 0.1em;
-  }
-  .thrust-icon{
-    width: 48px; height: 48px;
-    border-radius: var(--r-md);
-    background: var(--accent-soft);
-    border: 1px solid var(--accent-strong);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 22px;
-    font-size: 22px;
-  }
-  .thrust h3{
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 21px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    line-height: 1.3;
-    color: var(--text);
-  }
-  .thrust p{
-    color: var(--text-dim);
-    font-size: 15px;
-    line-height: 1.7;
-  }
-  .thrust-tags{
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-  .thrust-tag{
-    padding: 4px 10px;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-
-  /* Central vision card - emphasized */
+  /* Vision card on top */
   .vision-card{
-    margin-bottom: 32px;
+    margin-bottom: 56px;
     background: linear-gradient(135deg, var(--accent-soft), transparent);
     border: 1px solid var(--accent-strong);
     border-radius: var(--r-lg);
@@ -505,6 +427,184 @@
     line-height: 1.7;
   }
 
+  /* Thrust groups */
+  .thrust-group{
+    margin-bottom: 64px;
+  }
+  .thrust-group:last-child{
+    margin-bottom: 0;
+  }
+  .thrust-header{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--r-md);
+    margin-bottom: 24px;
+  }
+  .thrust-header-num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    flex-shrink: 0;
+    padding-top: 4px;
+    min-width: 80px;
+  }
+  .thrust-header-content h3{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .thrust-header-content p{
+    color: var(--text-dim);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  /* Project cards inside thrust groups */
+  .project-list{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .project{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 32px;
+    align-items: start;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project:hover{
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(217,72,15,0.06);
+  }
+  .project.figure-left{
+    grid-template-columns: 1.3fr 1fr;
+  }
+  .project.figure-left .project-text{
+    order: 2;
+  }
+  .project.figure-left .project-figure{
+    order: 1;
+  }
+
+  .project-text{
+    display: flex;
+    flex-direction: column;
+  }
+  .project-num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+  .project-meta{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+  }
+  .project h4{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  .project-tagline{
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .project-block{
+    margin-bottom: 16px;
+  }
+  .project-block h5{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .project-block p{
+    color: var(--text-dim);
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+  .project-block ul{
+    list-style: none;
+    padding: 0;
+  }
+  .project-block ul li{
+    color: var(--text-dim);
+    font-size: 14.5px;
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+  }
+  .project-block ul li::before{
+    content: '•';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  .project-tags{
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 20px;
+  }
+  .project-tag{
+    padding: 4px 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .project-figure{
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .project-figure img{
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+  }
+
+  /* ==================== NEWS ==================== */
   .news-list{
     display: flex;
     flex-direction: column;
@@ -638,7 +738,11 @@
     .stats{ grid-template-columns: repeat(2, 1fr); }
     .about-grid{ grid-template-columns: 1fr; }
     .pi-card{ position: static; }
-    .thrust-grid{ grid-template-columns: 1fr; }
+    .project,
+    .project.figure-left{ grid-template-columns: 1fr; }
+    .project.figure-left .project-text{ order: 0; }
+    .project.figure-left .project-figure{ order: 0; }
+    .thrust-header{ flex-direction: column; gap: 8px; padding: 20px; }
     .news-item{ grid-template-columns: 1fr; gap: 8px; padding: 20px; }
     .footer-inner{ grid-template-columns: 1fr 1fr; gap: 32px; }
     .join-card{ padding: 40px 24px; }
@@ -676,7 +780,7 @@
         Kyung Hee University · Mechanical Engineering
       </div>
       <h1 class="hero-title">
-        Intelligent <span class="accent"> transient thermal management</span> for high heat-flux systems.
+        Mastering <span class="accent">transient thermal loads</span> in next-generation high heat-flux systems.
       </h1>
       <p class="hero-sub">
         The Advanced Transient Thermal Systems Lab develops scalable cooling technologies for next-generation electronics, power systems, and data centers — combining phase change materials, transient heat transfer, and data-driven design.
@@ -694,15 +798,15 @@
 
 <div class="stats">
   <div class="stat">
-    <div class="stat-num">3</div>
-    <div class="stat-label">Research Thrusts</div>
+    <div class="stat-num">4</div>
+    <div class="stat-label">Prospective Projects</div>
   </div>
   <div class="stat">
     <div class="stat-num">PCM</div>
     <div class="stat-label">Core Technology</div>
   </div>
   <div class="stat">
-    <div class="stat-num">2025</div>
+    <div class="stat-num">2026</div>
     <div class="stat-label">Lab Established</div>
   </div>
   <div class="stat">
@@ -719,7 +823,9 @@
     </div>
     <div class="about-grid">
       <aside class="pi-card">
-        <div class="pi-photo">SK</div>
+        <div class="pi-photo">
+          <img src="pi-photo.jpg" alt="Soonwook Kim, Principal Investigator"/>
+        </div>
         <div class="pi-name">Soonwook Kim</div>
         <div class="pi-role">Assistant Professor<br>Principal Investigator</div>
         <div class="pi-links">
@@ -732,17 +838,17 @@
       <div class="bio-text">
         <p>I am an Assistant Professor in the Department of Mechanical Engineering at Kyung Hee University. My research lies at the intersection of heat transfer, materials engineering, and system design, with a focus on managing transient and high heat-flux conditions in modern thermal systems.</p>
         <p>My work explores the integration of phase change materials (PCMs) into cooling architectures to address dynamic thermal loads that cannot be effectively managed by conventional steady-state approaches. I am particularly interested in bridging the gap between material behavior and system-level performance, enabling scalable and reliable thermal solutions.</p>
-        <p>Prior to joining Kyung Hee University, I received my Ph.D. in Mechanical Engineering from the University of Illinois Urbana-Champaign. My doctoral research focused on advanced cooling strategies for electronics, including PCM-based thermal buffering and hybrid cooling systems.</p>
+        <p>Prior to joining Kyung Hee University, I received my Ph.D. in Mechanical Engineering from the University of Illinois Urbana-Champaign (Co-advisors: Prof. Nenad Miljkovic &amp; Prof. William P. King), and was a postdoctoral researcher at Texas A&amp;M University (Supervisor: Prof. Patrick Shamberger).</p>
 
         <div class="interests">
           <h3>Research Interests</h3>
           <div class="tag-list">
-            <span class="tag">AI-enabled thermal design</span>
             <span class="tag">PCM-based cooling</span>
             <span class="tag">Transient heat transfer</span>
             <span class="tag">Hybrid cooling systems</span>
             <span class="tag">Electronics packaging</span>
             <span class="tag">Reduced-order modeling</span>
+            <span class="tag">Data-driven design</span>
             <span class="tag">Caloric materials</span>
           </div>
         </div>
@@ -755,60 +861,211 @@
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">// 02 — Research</div>
-      <h2>Integrated thermal management through three research thrusts.</h2>
-      <p class="section-lead">Our research integrates material innovation with system co-design to address the growing thermal challenges in modern electronics. Three complementary thrusts work in tandem — from AI-driven design optimization to next-generation cooling solutions and system-level integration strategies.</p>
+      <h2>Four projects to launch at Kyung Hee University.</h2>
+      <p class="section-lead">Our upcoming research integrates material innovation with system co-design to address the growing thermal challenges in modern electronics. We plan to pursue four research projects, organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration.</p>
     </div>
 
-    <!-- Central vision card -->
     <div class="vision-card">
       <div class="label">// Lab Vision</div>
-      <h3>Integrated Thermal Management via Material Innovation & System Co-Design</h3>
-      <p>We bridge the gap between novel thermal materials and real-world system requirements, enabling cooling solutions that scale with the increasing power densities of modern electronics, data centers, and power systems.</p>
+      <h3>Integrated Thermal Management via Material Innovation &amp; System Co-Design</h3>
+      <p>We aim to bridge the gap between novel thermal materials and real-world system requirements, addressing rising power densities in AI data centers and next-generation high-power electronics through three interconnected research thrusts.</p>
     </div>
 
-    <div class="thrust-grid">
-      <!-- Thrust 1: AI-enabled (full width on top, mirroring the hero diagram) -->
-      <div class="thrust thrust-hero">
-        <div class="thrust-num">THRUST 01</div>
-        <div class="thrust-icon">🤖</div>
-        <h3>AI-enabled Thermal System Design</h3>
-        <p>We develop machine learning–based and reduced-order models to accelerate the design and optimization of complex thermal systems. By combining physics-informed neural networks with experimental data, we enable rapid evaluation of design candidates that would be prohibitively expensive to assess through traditional CFD or experiments alone.</p>
-        <div class="thrust-tags">
-          <span class="thrust-tag">machine-learning</span>
-          <span class="thrust-tag">PINN</span>
-          <span class="thrust-tag">reduced-order-model</span>
-          <span class="thrust-tag">design-optimization</span>
+    <!-- ============ THRUST 1: AI-enabled Thermal System Design ============ -->
+    <div class="thrust-group">
+      <div class="thrust-header">
+        <div class="thrust-header-num">THRUST 01</div>
+        <div class="thrust-header-content">
+          <h3>AI-enabled Thermal System Design</h3>
+          <p>Multi-fidelity modeling combining physics-based ROMs with machine learning surrogates to enable rapid optimization of thermal systems under realistic, stochastic operating conditions.</p>
         </div>
       </div>
 
-      <!-- Thrust 2: Cooling Solutions -->
-      <div class="thrust">
-        <div class="thrust-num">THRUST 02</div>
-        <div class="thrust-icon">🌿</div>
-        <h3>Next-generation Cooling Solution Development</h3>
-        <p>We investigate novel cooling mechanisms beyond conventional heat sinks — including phase change materials, two-phase cooling, and pressure-tunable thermal energy storage — to handle transient and high heat-flux loads that conventional steady-state systems cannot manage.</p>
-        <div class="thrust-tags">
-          <span class="thrust-tag">PCM</span>
-          <span class="thrust-tag">two-phase</span>
-          <span class="thrust-tag">caloric</span>
-          <span class="thrust-tag">transient</span>
-        </div>
-      </div>
+      <div class="project-list">
+        <!-- Project 2 (now first under Thrust 1) -->
+        <div class="project">
+          <div class="project-text">
+            <div class="project-num">PROJECT 01</div>
+            <div class="project-meta">Reduced-Order Modeling · Machine Learning · Optimization</div>
+            <h4>Composite PCM Design under Stochastic Loads</h4>
+            <div class="project-tagline">Optimal design via physics-based ROM and ML-based surrogate models</div>
 
-      <!-- Thrust 3: System & Packaging -->
-      <div class="thrust">
-        <div class="thrust-num">THRUST 03</div>
-        <div class="thrust-icon">📦</div>
-        <h3>System & Packaging-level Cooling Strategy Integration</h3>
-        <p>We design cooling architectures that integrate seamlessly with electronic packaging — from chip-level thermal interfaces to module- and system-level heat removal pathways. This holistic approach ensures that material-level innovations translate into real performance gains at the device and system level.</p>
-        <div class="thrust-tags">
-          <span class="thrust-tag">packaging</span>
-          <span class="thrust-tag">system-design</span>
-          <span class="thrust-tag">co-design</span>
-          <span class="thrust-tag">integration</span>
+            <div class="project-block">
+              <h5>Concept</h5>
+              <p>A multi-fidelity framework combining 0D/1D/2D reduced-order models with ML surrogates designs composite PCM heat sinks that perform reliably under stochastic, time-varying thermal loads.</p>
+            </div>
+
+            <div class="project-block">
+              <h5>Significance</h5>
+              <p>Existing PCM designs are limited to static or periodic loads, leaving a gap for real-world variable loads. Our framework will enable reliability-driven thermal design for data centers and power electronics.</p>
+            </div>
+
+            <div class="project-block">
+              <h5>Research Direction</h5>
+              <ul>
+                <li>ROM-based synthetic dataset generation</li>
+                <li>Training of ML surrogate models</li>
+                <li>Bayesian optimization for design discovery</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span class="project-tag">ROM</span>
+              <span class="project-tag">machine-learning</span>
+              <span class="project-tag">surrogate-model</span>
+              <span class="project-tag">Bayesian-optimization</span>
+            </div>
+          </div>
+          <div class="project-figure">
+            <img src="research-2.png" alt="Multi-fidelity framework: physics-based ROM, ML surrogate, and design optimization"/>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- ============ THRUST 2: Next-generation Cooling Solution Development ============ -->
+    <div class="thrust-group">
+      <div class="thrust-header">
+        <div class="thrust-header-num">THRUST 02</div>
+        <div class="thrust-header-content">
+          <h3>Next-generation Cooling Solution Development</h3>
+          <p>Novel cooling mechanisms — including PCM-integrated structures, two-phase, and pressure-tunable approaches — designed to handle transient and high heat-flux loads beyond the capability of conventional steady-state cooling.</p>
+        </div>
+      </div>
+
+      <div class="project-list">
+        <!-- Project 1 (now under Thrust 2) — figure-left for visual rhythm -->
+        <div class="project figure-left">
+          <div class="project-text">
+            <div class="project-num">PROJECT 02</div>
+            <div class="project-meta">Additive Manufacturing · CFD · Heat Transfer Experiment</div>
+            <h4>3D-Printed Porous Cold Plate–PCM Hybrid</h4>
+            <div class="project-tagline">Combining latent heat storage with convective cooling under pulsed thermal loads</div>
+
+            <div class="project-block">
+              <h5>Concept</h5>
+              <p>Porous metal cold plates fabricated via additive manufacturing are infiltrated with PCM, integrating latent-heat buffering and liquid cooling into a single device for synergistic thermal performance.</p>
+            </div>
+
+            <div class="project-block">
+              <h5>Significance</h5>
+              <p>Peak loads are absorbed by PCM latent heat while average loads are removed by liquid cooling — simultaneously suppressing peak temperatures and temperature swings in high heat-flux electronics.</p>
+            </div>
+
+            <div class="project-block">
+              <h5>Research Direction</h5>
+              <ul>
+                <li>Design optimization of porous metal architectures</li>
+                <li>Effects of PCM filling fraction and channel layout</li>
+                <li>Prototype fabrication and thermal/hydraulic validation</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span class="project-tag">additive-manufacturing</span>
+              <span class="project-tag">PCM</span>
+              <span class="project-tag">liquid-cooling</span>
+              <span class="project-tag">hybrid</span>
+            </div>
+          </div>
+          <div class="project-figure">
+            <img src="research-1.png" alt="3D-printed porous cold plate-PCM hybrid concept and mechanism"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ THRUST 3: System & Packaging-level Cooling Strategy Integration ============ -->
+    <div class="thrust-group">
+      <div class="thrust-header">
+        <div class="thrust-header-num">THRUST 03</div>
+        <div class="thrust-header-content">
+          <h3>System &amp; Packaging-level Cooling Strategy Integration</h3>
+          <p>Cooling architectures co-designed with electronic packaging — from chip-level interfaces to module- and system-level integration — translating material innovation into real device-level performance gains.</p>
+        </div>
+      </div>
+
+      <div class="project-list">
+        <!-- Project 3 -->
+        <div class="project">
+          <div class="project-text">
+            <div class="project-num">PROJECT 03</div>
+            <div class="project-meta">Active PCM · System Integration · Control</div>
+            <h4>Dynamic PCM Integrated Cooling System</h4>
+            <div class="project-tagline">Pressure-driven active PCM that maintains thin melt layers for sustained cooling</div>
+
+            <div class="project-block">
+              <h5>Concept</h5>
+              <p>By applying mechanical pressure to solid PCM, the melted liquid is actively expelled — sustaining close-contact melting and preventing the cooling degradation that occurs as the melt layer thickens in conventional bulk PCM systems.</p>
+            </div>
+
+            <div class="project-block">
+              <h5>Significance</h5>
+              <p>Solves the fundamental performance-decay problem of bulk PCM cooling, lowering peak temperature and reducing system-level cooling burden — enabling effective transient thermal management for high-power-density electronics.</p>
+            </div>
+
+            <div class="project-block">
+              <h5>Research Direction</h5>
+              <ul>
+                <li>ROM-based design optimization</li>
+                <li>Integrated automatic pressurization &amp; drainage system</li>
+                <li>Reusable, modular dynPCM cooling modules</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span class="project-tag">dynPCM</span>
+              <span class="project-tag">active-cooling</span>
+              <span class="project-tag">close-contact-melting</span>
+              <span class="project-tag">high-power</span>
+            </div>
+          </div>
+          <div class="project-figure">
+            <img src="research-3.png" alt="Conventional PCM vs dynPCM cooling comparison and performance"/>
+          </div>
+        </div>
+
+        <!-- Project 4 — figure-left for visual rhythm -->
+        <div class="project figure-left">
+          <div class="project-text">
+            <div class="project-num">PROJECT 04</div>
+            <div class="project-meta">Refrigeration · Materials · Device Design</div>
+            <h4>Barocaloric Material System-Level Cooling</h4>
+            <div class="project-tagline">Next-generation solid-state PCM refrigerants controlled by hydrostatic pressure</div>
+
+            <div class="project-block">
+              <h5>Concept</h5>
+              <p>A gas-pressurized, module-scale barocaloric heat-transfer test platform enabling simultaneous measurement of pressure-driven thermal effects and heat transfer, with a path toward system-level integration.</p>
+            </div>
+
+            <div class="project-block">
+              <h5>Significance</h5>
+              <p>Existing barocaloric studies are limited to milligram-scale property characterization, making real-world heat-transfer behavior difficult to assess. This platform will evaluate barocaloric performance and heat transfer at the module level — bridging materials and system for next-generation HVAC refrigerants.</p>
+            </div>
+
+            <div class="project-block">
+              <h5>Research Direction</h5>
+              <ul>
+                <li>Advanced gas-pressurized tube module design (1–100 bar)</li>
+                <li>Temperature-scanning calorimetry &amp; dynamics</li>
+                <li>Cycle &amp; system-level modeling for HVAC scale-up</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span class="project-tag">barocaloric</span>
+              <span class="project-tag">solid-state</span>
+              <span class="project-tag">HVAC</span>
+              <span class="project-tag">refrigeration</span>
+            </div>
+          </div>
+          <div class="project-figure">
+            <img src="research-4.png" alt="Barocaloric module-scale test platform and heat flow characterization"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -816,28 +1073,18 @@
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">// 03 — Recent</div>
-      <h2>Lab news & updates.</h2>
+      <h2>Lab news &amp; updates.</h2>
     </div>
     <div class="news-list">
       <div class="news-item">
         <div class="news-date">2026.04</div>
-        <div class="news-tag">Lab</div>
-        <div class="news-text">ATTS Lab officially launches at Kyung Hee University. Recruiting motivated M.S./Ph.D. students.</div>
+        <div class="news-tag">Conference</div>
+        <div class="news-text">Attended the Korean Society of Mechanical Engineers (KSME) annual meeting.</div>
       </div>
       <div class="news-item">
         <div class="news-date">2026.03</div>
-        <div class="news-tag">Paper</div>
-        <div class="news-text">New paper on hybrid PCM-liquid cooling architectures submitted to <em>Int. J. Heat and Mass Transfer</em>.</div>
-      </div>
-      <div class="news-item">
-        <div class="news-date">2026.02</div>
-        <div class="news-tag">Talk</div>
-        <div class="news-text">Invited talk on pressure-tunable thermal storage at the Korean Society of Mechanical Engineers annual meeting.</div>
-      </div>
-      <div class="news-item">
-        <div class="news-date">2026.01</div>
-        <div class="news-tag">Paper</div>
-        <div class="news-text">Sample news entry — replace with your actual updates as they come.</div>
+        <div class="news-tag">Lab</div>
+        <div class="news-text">ATTS Lab officially launches at Kyung Hee University. Recruiting motivated M.S./Ph.D. students.</div>
       </div>
     </div>
   </div>
@@ -847,12 +1094,10 @@
   <div class="join-card">
     <div class="eyebrow">// 04 — Join Us</div>
     <h2>Build the future of thermal systems with us.</h2>
-    <p>We're actively recruiting motivated graduate students and undergraduate researchers passionate about heat transfer, materials, and computational modeling.</p>
+    <p>We're actively recruiting motivated M.S. students (2027 spring/fall) and undergraduate researchers passionate about heat transfer, materials, and computational modeling. All four research projects are available as thesis topics.</p>
     <div class="opportunities">
-      <span class="opp-pill">M.S. Students</span>
-      <span class="opp-pill">Ph.D. Students</span>
-      <span class="opp-pill">Undergrad Research</span>
-      <span class="opp-pill">Visiting Scholars</span>
+      <span class="opp-pill">M.S. Students (2027)</span>
+      <span class="opp-pill">Undergrad Researchers</span>
     </div>
     <a href="mailto:snookim@khu.ac.kr" class="btn btn-primary">Get in Touch →</a>
   </div>
@@ -865,7 +1110,7 @@
         <div class="logo-mark">A</div>
         <span>ATTS Lab</span>
       </a>
-      <p>Advanced Transient Thermal Systems Lab. Department of Mechanical Engineering, Kyung Hee University, Yongin, South Korea.</p>
+      <p>Advanced Transient Thermal Systems Lab. Department of Mechanical Engineering, Kyung Hee University, Yongin, South Korea. Office: Woojeongwon 6016.</p>
     </div>
     <div class="footer-col">
       <h4>Lab</h4>
