@@ -519,6 +519,70 @@
     height: 3px;
     background: var(--heat-gradient);
   }
+
+  /* Research Overview: 4-box scannable grid */
+  .research-overview{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+  .overview-card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 28px 26px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .overview-card:hover{
+    border-color: rgba(220,38,38,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220,38,38,0.06);
+  }
+  .overview-card::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--heat-gradient);
+    opacity: 0.5;
+    transition: opacity 0.25s;
+  }
+  .overview-card:hover::before{
+    opacity: 1;
+  }
+  .overview-num{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--heat-orange);
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .overview-title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .overview-text{
+    color: var(--text-dim);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  .overview-text strong{
+    color: var(--text);
+    font-weight: 600;
+    background: linear-gradient(180deg, transparent 60%, rgba(245,158,11,0.18) 60%);
+    padding: 0 2px;
+  }
   .vision-card .label{
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -1078,6 +1142,10 @@
     .join-card{ padding: 40px 24px; }
     section{ padding: 80px 24px; }
     .hero{ padding: 120px 24px 80px; }
+    .research-overview{ grid-template-columns: 1fr 1fr; gap: 12px; }
+  }
+  @media (max-width: 600px){
+    .research-overview{ grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -1231,6 +1299,29 @@
       <div class="label">// Lab Vision</div>
       <h3>Integrated Thermal Management via Material Innovation &amp; System Co-Design</h3>
       <p>We aim to bridge the gap between novel thermal materials and real-world system requirements, addressing rising power densities in AI data centers and next-generation high-power electronics through three interconnected research thrusts.</p>
+    </div>
+
+    <div class="research-overview">
+      <div class="overview-card">
+        <div class="overview-num">// 01</div>
+        <div class="overview-title">The Challenge</div>
+        <div class="overview-text">AI accelerators, EV inverters, and 5G infrastructure push thermal loads beyond what conventional cooling can handle. The bottleneck isn't average heat — it's the <strong>sudden, intense thermal pulses</strong> that limit reliability and performance.</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-num">// 02</div>
+        <div class="overview-title">Why PCMs?</div>
+        <div class="overview-text">Phase change materials absorb enormous heat during melting at near-constant temperature. This <strong>latent heat buffering</strong> is uniquely suited for transient loads — when peak power lasts seconds to minutes, not hours.</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-num">// 03</div>
+        <div class="overview-title">Our Approach</div>
+        <div class="overview-text">We co-design <strong>materials, heat transfer, and system architecture</strong> together — combining novel PCM composites, AI-driven optimization, and packaging-level integration that prior work treated separately.</div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-num">// 04</div>
+        <div class="overview-title">Why It Matters</div>
+        <div class="overview-text">From data centers consuming gigawatts to EVs that must pass safety tests, <strong>thermal limits define what's possible</strong>. Better transient cooling enables denser, faster, and more reliable electronics — at lower energy cost.</div>
+      </div>
     </div>
 
     <!-- ============ THRUST 1 ============ -->
@@ -1731,9 +1822,10 @@
   <div class="join-card">
     <div class="eyebrow">// 05 — Join Us</div>
     <h2>Build the future of thermal systems with us.</h2>
-    <p>We're actively recruiting motivated M.S. students (2027 spring/fall) and undergraduate researchers passionate about heat transfer, materials, and computational modeling. All four research projects are available as thesis topics.</p>
+    <p>We're actively recruiting motivated Ph.D. and M.S. students and undergraduate researchers passionate about heat transfer, materials, and computational modeling. All four research projects are available as thesis topics.</p>
     <div class="opportunities">
-      <span class="opp-pill">M.S. Students (2027)</span>
+      <span class="opp-pill">Ph.D. Students</span>
+      <span class="opp-pill">M.S. Students</span>
       <span class="opp-pill">Undergrad Researchers</span>
     </div>
     <a href="mailto:snookim@khu.ac.kr" class="btn btn-primary">Get in Touch →</a>
