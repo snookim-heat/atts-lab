@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -125,6 +125,46 @@
   .nav-cta:hover{
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+  }
+
+  /* Language toggle */
+  .nav-right{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .lang-toggle{
+    display: inline-flex;
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 2px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .lang-toggle button{
+    background: transparent;
+    border: none;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 5px;
+    letter-spacing: 0.05em;
+    font-family: inherit;
+    transition: all 0.18s;
+  }
+  .lang-toggle button:hover{
+    color: var(--text);
+  }
+  .lang-toggle button.active{
+    background: var(--heat-gradient);
+    color: white;
+    box-shadow: 0 1px 3px rgba(220,38,38,0.25);
+  }
+  @media (max-width: 700px){
+    .lang-toggle button{ padding: 4px 8px; font-size: 10px; }
   }
 
   .hero{
@@ -1268,6 +1308,20 @@
     .research-overview{ grid-template-columns: 1fr; }
   }
 </style>
+<script>
+  // Early language detection (prevents flash of English on first paint)
+  (function(){
+    try {
+      var saved = localStorage.getItem('atts-lang');
+      var lang = (saved === 'en' || saved === 'ko') ? saved : 'ko';
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('data-initial-lang', lang);
+    } catch(e) {
+      document.documentElement.setAttribute('lang', 'ko');
+      document.documentElement.setAttribute('data-initial-lang', 'ko');
+    }
+  })();
+</script>
 </head>
 <body>
 
@@ -1278,13 +1332,19 @@
       <span>ATTS Lab</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about" data-en="About" data-ko="소개">About</a></li>
+      <li><a href="#research" data-en="Research" data-ko="연구">Research</a></li>
+      <li><a href="#publications" data-en="Publications" data-ko="논문">Publications</a></li>
+      <li><a href="#news" data-en="News" data-ko="소식">News</a></li>
+      <li><a href="#contact" data-en="Contact" data-ko="연락처">Contact</a></li>
     </ul>
-    <a href="#join" class="nav-cta">Join Us →</a>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="ko" class="active" aria-label="한국어">KR</button>
+      </div>
+      <a href="#join" class="nav-cta" data-en="Join Us →" data-ko="합류하기 →">Join Us →</a>
+    </div>
   </div>
 </nav>
 
@@ -1294,17 +1354,17 @@
     <div>
       <div class="badge">
         <span class="badge-dot"></span>
-        Kyung Hee University · Mechanical Engineering
+        <span data-en="Kyung Hee University · Mechanical Engineering" data-ko="경희대학교 · 기계공학부">Kyung Hee University · Mechanical Engineering</span>
       </div>
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-en-html="Mastering &lt;span class=&quot;accent&quot;&gt;transient thermal loads&lt;/span&gt; in next-generation high heat-flux systems." data-ko-html="Mastering &lt;span class=&quot;accent&quot;&gt;transient thermal loads&lt;/span&gt; in next-generation high heat-flux systems.">
         Mastering <span class="accent">transient thermal loads</span> in next-generation high heat-flux systems.
       </h1>
-      <p class="hero-sub">
+      <p class="hero-sub" data-en="The Advanced Transient Thermal Systems Lab develops scalable cooling technologies for next-generation electronics, power systems, and data centers — combining phase change materials, transient heat transfer, and data-driven design." data-ko="첨단 과도 열시스템 연구실(ATTS Lab)은 차세대 전자기기, 전력 시스템, 데이터센터를 위한 확장 가능한 냉각 기술을 개발합니다 — 상변화물질, 과도 열전달, 데이터 기반 설계를 융합하여 접근합니다.">
         The Advanced Transient Thermal Systems Lab develops scalable cooling technologies for next-generation electronics, power systems, and data centers — combining phase change materials, transient heat transfer, and data-driven design.
       </p>
       <div class="hero-actions">
-        <a href="#research" class="btn btn-primary">Explore Research →</a>
-        <a href="#join" class="btn btn-ghost">Open Positions</a>
+        <a href="#research" class="btn btn-primary" data-en="Explore Research →" data-ko="연구 살펴보기 →">Explore Research →</a>
+        <a href="#join" class="btn btn-ghost" data-en="Open Positions" data-ko="모집 중인 자리">Open Positions</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -1316,27 +1376,27 @@
 <div class="stats">
   <div class="stat">
     <div class="stat-num">4</div>
-    <div class="stat-label">Prospective Projects</div>
+    <div class="stat-label" data-en="Prospective Projects" data-ko="예정 프로젝트">Prospective Projects</div>
   </div>
   <div class="stat">
     <div class="stat-num">PCM</div>
-    <div class="stat-label">Core Technology</div>
+    <div class="stat-label" data-en="Core Technology" data-ko="핵심 기술">Core Technology</div>
   </div>
   <div class="stat">
     <div class="stat-num">2026</div>
-    <div class="stat-label">Lab Established</div>
+    <div class="stat-label" data-en="Lab Established" data-ko="연구실 설립">Lab Established</div>
   </div>
   <div class="stat">
     <div class="stat-num">∞</div>
-    <div class="stat-label">Curiosity</div>
+    <div class="stat-label" data-en="Curiosity" data-ko="호기심">Curiosity</div>
   </div>
 </div>
 
 <section id="about">
   <div class="container">
     <div class="section-header">
-      <div class="eyebrow">// 01 — About</div>
-      <h2>Bridging materials, heat transfer, and system design.</h2>
+      <div class="eyebrow" data-en="// 01 — About" data-ko="// 01 — 소개">// 01 — About</div>
+      <h2 data-en="Bridging materials, heat transfer, and system design." data-ko="Bridging materials, heat transfer, and system design.">Bridging materials, heat transfer, and system design.</h2>
     </div>
     <div class="about-grid">
       <aside class="pi-card">
@@ -1345,7 +1405,7 @@
         </div>
         <div class="pi-name">Soonwook Kim</div>
         <div class="pi-name-kr">김순욱</div>
-        <div class="pi-role">Assistant Professor<br>Principal Investigator</div>
+        <div class="pi-role" data-en-html="Assistant Professor&lt;br&gt;Principal Investigator" data-ko-html="조교수&lt;br&gt;책임연구원">Assistant Professor<br>Principal Investigator</div>
         <div class="pi-links">
           <a href="https://scholar.google.com/citations?user=-PKWrsMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" class="pi-link">Google Scholar</a>
           <a href="https://www.linkedin.com/in/soonwook-kim" target="_blank" rel="noopener" class="pi-link">LinkedIn</a>
@@ -1354,44 +1414,44 @@
         </div>
       </aside>
       <div class="bio-text">
-        <p>I am an Assistant Professor in the Department of Mechanical Engineering at Kyung Hee University. My research lies at the intersection of heat transfer, materials engineering, and system design, with a focus on managing transient and high heat-flux conditions in modern thermal systems.</p>
-        <p>My work explores the integration of phase change materials (PCMs) into cooling architectures to address dynamic thermal loads that cannot be effectively managed by conventional steady-state approaches. I am particularly interested in bridging the gap between material behavior and system-level performance, enabling scalable and reliable thermal solutions for high-power electronics, data centers, and HVAC applications.</p>
-        <p>Prior to joining Kyung Hee University, I was a postdoctoral researcher at Texas A&amp;M University with Prof. Patrick J. Shamberger, working on salt-hydrate eutectic-graphite foam composite PCMs (DOE BENEFIT) and barocaloric plastic crystal cooling systems (ONR). I received my Ph.D. in Mechanical Science &amp; Engineering from the University of Illinois at Urbana-Champaign, co-advised by Prof. William P. King and Prof. Nenad Miljkovic, and my B.S. in Mechanical Engineering from Korea University.</p>
+        <p data-en="I am an Assistant Professor in Mechanical Engineering at Kyung Hee University. My research lies at the intersection of heat transfer, materials engineering, and system design, with a focus on managing transient and high heat-flux conditions in modern thermal systems." data-ko="저는 경희대학교 기계공학부 조교수입니다. 제 연구는 열전달, 재료공학, 시스템 설계가 만나는 지점에 자리하며, 현대 열시스템에서 발생하는 과도(transient) 및 고열유속(high heat-flux) 환경의 제어에 초점을 두고 있습니다.">I am an Assistant Professor in Mechanical Engineering at Kyung Hee University. My research lies at the intersection of heat transfer, materials engineering, and system design, with a focus on managing transient and high heat-flux conditions in modern thermal systems.</p>
+        <p data-en="My work explores the integration of phase change materials (PCMs) into cooling architectures to address dynamic thermal loads that cannot be effectively managed by conventional steady-state approaches. I am particularly interested in bridging the gap between material behavior and system-level performance, enabling scalable and reliable thermal solutions for high-power electronics, data centers, and HVAC applications." data-ko="저는 기존 정상상태(steady-state) 접근만으로는 해결하기 어려운 동적 열부하 문제를 풀기 위해, 상변화물질(PCM)을 냉각 아키텍처에 통합하는 연구를 수행합니다. 특히 재료 거동과 시스템 수준의 성능 사이의 간극을 메우는 데 큰 관심을 두고 있으며, 이를 통해 고출력 전력전자, 데이터센터, 공조(HVAC) 시스템에 확장 가능하고 신뢰성 있는 열관리 솔루션을 제공하고자 합니다.">My work explores the integration of phase change materials (PCMs) into cooling architectures to address dynamic thermal loads that cannot be effectively managed by conventional steady-state approaches. I am particularly interested in bridging the gap between material behavior and system-level performance, enabling scalable and reliable thermal solutions for high-power electronics, data centers, and HVAC applications.</p>
+        <p data-en="Prior to joining Kyung Hee University, I was a postdoctoral researcher at Texas A&amp;M University with Prof. Patrick J. Shamberger, working on salt-hydrate eutectic-graphite foam composite PCMs (DOE BENEFIT) and barocaloric plastic crystal cooling systems (ONR). I received my Ph.D. in Mechanical Science &amp; Engineering from the University of Illinois at Urbana-Champaign, co-advised by Prof. William P. King and Prof. Nenad Miljkovic, and my B.S. in Mechanical Engineering from Korea University." data-ko="경희대학교에 부임하기 전, 저는 Texas A&amp;M University에서 Prof. Patrick J. Shamberger 지도 아래 박사후연구원으로 재직했으며, 염수화물 공정-흑연 폼 복합 PCM(DOE BENEFIT) 및 압전(barocaloric) 플라스틱 결정 냉각 시스템(ONR) 연구를 수행했습니다. 박사 학위는 University of Illinois at Urbana-Champaign에서 Prof. William P. King 및 Prof. Nenad Miljkovic 교수의 공동지도 하에 받았으며, 학사 학위는 고려대학교 기계공학과에서 취득했습니다.">Prior to joining Kyung Hee University, I was a postdoctoral researcher at Texas A&amp;M University with Prof. Patrick J. Shamberger, working on salt-hydrate eutectic-graphite foam composite PCMs (DOE BENEFIT) and barocaloric plastic crystal cooling systems (ONR). I received my Ph.D. in Mechanical Science &amp; Engineering from the University of Illinois at Urbana-Champaign, co-advised by Prof. William P. King and Prof. Nenad Miljkovic, and my B.S. in Mechanical Engineering from Korea University.</p>
 
         <div class="timeline-wrap">
-          <h3>Education &amp; Experience</h3>
+          <h3 data-en="Education &amp; Experience" data-ko="학력 및 경력">Education &amp; Experience</h3>
           <div class="timeline">
             <div class="timeline-item current">
               <div class="timeline-period">MAR 2026 — PRESENT</div>
-              <div class="timeline-role">Assistant Professor</div>
-              <div class="timeline-place">Kyung Hee University, Department of Mechanical Engineering</div>
+              <div class="timeline-role" data-en="Assistant Professor" data-ko="조교수">Assistant Professor</div>
+              <div class="timeline-place" data-en="Kyung Hee University, Mechanical Engineering" data-ko="경희대학교 기계공학부">Kyung Hee University, Mechanical Engineering</div>
             </div>
             <div class="timeline-item">
               <div class="timeline-period">JAN 2025 — FEB 2026</div>
-              <div class="timeline-role">Postdoctoral Researcher</div>
+              <div class="timeline-role" data-en="Postdoctoral Researcher" data-ko="박사후연구원">Postdoctoral Researcher</div>
               <div class="timeline-place">
-                Texas A&amp;M University, Materials Science &amp; Engineering
-                <span class="advisor">Supervisor: Prof. Patrick J. Shamberger</span>
+                <span data-en="Texas A&amp;M University, Materials Science &amp; Engineering" data-ko="Texas A&amp;M University, 재료과학공학과">Texas A&amp;M University, Materials Science &amp; Engineering</span>
+                <span class="advisor" data-en="Supervisor: Prof. Patrick J. Shamberger" data-ko="지도교수: Prof. Patrick J. Shamberger">Supervisor: Prof. Patrick J. Shamberger</span>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-period">AUG 2017 — DEC 2024</div>
-              <div class="timeline-role">Ph.D. in Mechanical Science &amp; Engineering</div>
+              <div class="timeline-role" data-en="Ph.D. in Mechanical Science &amp; Engineering" data-ko="기계과학공학 박사">Ph.D. in Mechanical Science &amp; Engineering</div>
               <div class="timeline-place">
-                University of Illinois at Urbana-Champaign
-                <span class="advisor">Advisors: Prof. William P. King &amp; Prof. Nenad Miljkovic (2020–24); Prof. Gaurav Bahl (2017–20)</span>
+                <span data-en="University of Illinois at Urbana-Champaign" data-ko="University of Illinois at Urbana-Champaign">University of Illinois at Urbana-Champaign</span>
+                <span class="advisor" data-en="Advisors: Prof. William P. King &amp; Prof. Nenad Miljkovic (2020–24); Prof. Gaurav Bahl (2017–20)" data-ko="지도교수: Prof. William P. King &amp; Prof. Nenad Miljkovic (2020–24); Prof. Gaurav Bahl (2017–20)">Advisors: Prof. William P. King &amp; Prof. Nenad Miljkovic (2020–24); Prof. Gaurav Bahl (2017–20)</span>
               </div>
             </div>
             <div class="timeline-item">
               <div class="timeline-period">MAR 2010 — FEB 2016</div>
-              <div class="timeline-role">B.S. in Mechanical Engineering</div>
-              <div class="timeline-place">Korea University</div>
+              <div class="timeline-role" data-en="B.S. in Mechanical Engineering" data-ko="기계공학 학사">B.S. in Mechanical Engineering</div>
+              <div class="timeline-place" data-en="Korea University" data-ko="고려대학교">Korea University</div>
             </div>
           </div>
         </div>
 
         <div class="interests">
-          <h3>Research Interests</h3>
+          <h3 data-en="Research Interests" data-ko="연구 관심 분야">Research Interests</h3>
           <div class="tag-list">
             <span class="tag">PCM-based cooling</span>
             <span class="tag">Transient heat transfer</span>
@@ -1410,37 +1470,37 @@
 <section id="research" class="research-section">
   <div class="container">
     <div class="section-header">
-      <div class="eyebrow">// 02 — Research</div>
-      <h2>Four projects to launch at <span style="white-space: nowrap;">Kyung Hee University</span>.</h2>
-      <p class="section-lead">Our upcoming research integrates material innovation with system co-design to address the growing thermal challenges in modern electronics. We plan to pursue four research projects, organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration.</p>
+      <div class="eyebrow" data-en="// 02 — Research" data-ko="// 02 — 연구">// 02 — Research</div>
+      <h2 data-en-html="Four projects to launch at &lt;span style=&quot;white-space: nowrap;&quot;&gt;Kyung Hee University&lt;/span&gt;." data-ko-html="Four projects to launch at &lt;span style=&quot;white-space: nowrap;&quot;&gt;Kyung Hee University&lt;/span&gt;.">Four projects to launch at <span style="white-space: nowrap;">Kyung Hee University</span>.</h2>
+      <p class="section-lead" data-en="Our upcoming research integrates material innovation with system co-design to address the growing thermal challenges in modern electronics. We plan to pursue four research projects, organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration." data-ko="저희가 추진할 연구는 재료 혁신과 시스템 공동설계를 결합하여 현대 전자기기의 점증하는 열문제에 대응하는 것을 목표로 합니다. 총 네 개의 프로젝트를 세 가지 상호보완적 연구 축(AI 기반 설계 · 차세대 냉각 솔루션 · 시스템 통합) 아래에서 수행할 계획입니다.">Our upcoming research integrates material innovation with system co-design to address the growing thermal challenges in modern electronics. We plan to pursue four research projects, organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration.</p>
     </div>
 
     <div class="vision-card">
-      <div class="label">// Lab Vision</div>
-      <h3>Integrated Thermal Management via Material Innovation &amp; System Co-Design</h3>
-      <p>We aim to bridge the gap between novel thermal materials and real-world system requirements, addressing rising power densities in AI data centers and next-generation high-power electronics through three interconnected research thrusts.</p>
+      <div class="label" data-en="// Lab Vision" data-ko="// 연구실 비전">// Lab Vision</div>
+      <h3 data-en="Integrated Thermal Management via Material Innovation &amp; System Co-Design" data-ko="재료 혁신과 시스템 공동설계를 통한 통합 열관리">Integrated Thermal Management via Material Innovation &amp; System Co-Design</h3>
+      <p data-en="We aim to bridge the gap between novel thermal materials and real-world system requirements, addressing rising power densities in AI data centers and next-generation high-power electronics through three interconnected research thrusts." data-ko="저희는 신소재의 가능성과 실제 시스템 요구사항 사이의 간극을 좁혀, 세 가지 상호 연결된 연구 축을 통해 AI 데이터센터와 차세대 고출력 전자기기에서 급증하는 전력밀도 문제에 대응하고자 합니다.">We aim to bridge the gap between novel thermal materials and real-world system requirements, addressing rising power densities in AI data centers and next-generation high-power electronics through three interconnected research thrusts.</p>
     </div>
 
     <div class="research-overview">
       <div class="overview-card">
         <div class="overview-num">// 01</div>
-        <div class="overview-title">The Challenge</div>
-        <div class="overview-text">AI accelerators, EV inverters, and 5G infrastructure push thermal loads beyond what conventional cooling can handle. The bottleneck isn't average heat — it's the <strong>sudden, intense thermal pulses</strong> that limit reliability and performance.</div>
+        <div class="overview-title" data-en="The Challenge" data-ko="문제 정의">The Challenge</div>
+        <div class="overview-text" data-en-html="AI accelerators, EV inverters, and 5G infrastructure push thermal loads beyond what conventional cooling can handle. The bottleneck isn't average heat — it's the &lt;strong&gt;sudden, intense thermal pulses&lt;/strong&gt; that limit reliability and performance." data-ko-html="AI 가속기, 전기차 인버터, 5G 인프라는 기존 냉각 기술이 감당할 수 있는 한계를 넘어서고 있습니다. 진짜 병목은 평균 발열이 아니라, 신뢰성과 성능을 제한하는 &lt;strong&gt;순간적이고 강렬한 열펄스&lt;/strong&gt;입니다.">AI accelerators, EV inverters, and 5G infrastructure push thermal loads beyond what conventional cooling can handle. The bottleneck isn't average heat — it's the <strong>sudden, intense thermal pulses</strong> that limit reliability and performance.</div>
       </div>
       <div class="overview-card">
         <div class="overview-num">// 02</div>
-        <div class="overview-title">Why PCMs?</div>
-        <div class="overview-text">Phase change materials absorb enormous heat during melting at near-constant temperature. This <strong>latent heat buffering</strong> is uniquely suited for transient loads — when peak power lasts seconds to minutes, not hours.</div>
+        <div class="overview-title" data-en="Why PCMs?" data-ko="왜 상변화물질인가?">Why PCMs?</div>
+        <div class="overview-text" data-en-html="Phase change materials absorb enormous heat during melting at near-constant temperature. This &lt;strong&gt;latent heat buffering&lt;/strong&gt; is uniquely suited for transient loads — when peak power lasts seconds to minutes, not hours." data-ko-html="상변화물질(PCM)은 거의 일정한 온도에서 융해되며 막대한 양의 열을 흡수합니다. 이 &lt;strong&gt;잠열 버퍼링&lt;/strong&gt; 효과는 시간 단위가 아닌 초·분 단위로 발생하는 과도 열부하 환경에 가장 적합한 해법입니다.">Phase change materials absorb enormous heat during melting at near-constant temperature. This <strong>latent heat buffering</strong> is uniquely suited for transient loads — when peak power lasts seconds to minutes, not hours.</div>
       </div>
       <div class="overview-card">
         <div class="overview-num">// 03</div>
-        <div class="overview-title">Our Approach</div>
-        <div class="overview-text">We co-design <strong>materials, heat transfer, and system architecture</strong> together — combining novel PCM composites, AI-driven optimization, and packaging-level integration that prior work treated separately.</div>
+        <div class="overview-title" data-en="Our Approach" data-ko="우리의 접근">Our Approach</div>
+        <div class="overview-text" data-en-html="We co-design &lt;strong&gt;materials, heat transfer, and system architecture&lt;/strong&gt; together — combining novel PCM composites, AI-driven optimization, and packaging-level integration that prior work treated separately." data-ko-html="저희는 &lt;strong&gt;재료·열전달·시스템 아키텍처&lt;/strong&gt;를 분리해서 다루지 않고 함께 공동설계합니다 — 신규 PCM 복합소재, AI 기반 최적화, 패키지 단위 통합을 한 흐름으로 엮습니다.">We co-design <strong>materials, heat transfer, and system architecture</strong> together — combining novel PCM composites, AI-driven optimization, and packaging-level integration that prior work treated separately.</div>
       </div>
       <div class="overview-card">
         <div class="overview-num">// 04</div>
-        <div class="overview-title">Why It Matters</div>
-        <div class="overview-text">From data centers consuming gigawatts to EVs that must pass safety tests, <strong>thermal limits define what's possible</strong>. Better transient cooling enables denser, faster, and more reliable electronics — at lower energy cost.</div>
+        <div class="overview-title" data-en="Why It Matters" data-ko="왜 중요한가">Why It Matters</div>
+        <div class="overview-text" data-en-html="From data centers consuming gigawatts to EVs that must pass safety tests, &lt;strong&gt;thermal limits define what's possible&lt;/strong&gt;. Better transient cooling enables denser, faster, and more reliable electronics — at lower energy cost." data-ko-html="기가와트급 전력을 소비하는 데이터센터부터 안전 테스트를 통과해야 하는 전기차까지, &lt;strong&gt;열한계가 무엇이 가능한지를 결정합니다&lt;/strong&gt;. 더 나은 과도 냉각 기술은 더 집적되고, 빠르고, 신뢰할 수 있는 전자기기를 — 더 낮은 에너지 비용으로 — 가능하게 합니다.">From data centers consuming gigawatts to EVs that must pass safety tests, <strong>thermal limits define what's possible</strong>. Better transient cooling enables denser, faster, and more reliable electronics — at lower energy cost.</div>
       </div>
     </div>
 
@@ -1449,8 +1509,8 @@
       <div class="thrust-header">
         <div class="thrust-header-num">THRUST 01</div>
         <div class="thrust-header-content">
-          <h3>AI-enabled Thermal System Design</h3>
-          <p>Multi-fidelity modeling combining physics-based ROMs with machine learning surrogates to enable rapid optimization of thermal systems under realistic, stochastic operating conditions.</p>
+          <h3 data-en="AI-enabled Thermal System Design" data-ko="AI 기반 열시스템 설계">AI-enabled Thermal System Design</h3>
+          <p data-en="Multi-fidelity modeling combining physics-based ROMs with machine learning surrogates to enable rapid optimization of thermal systems under realistic, stochastic operating conditions." data-ko="물리 기반 차원축소 모델(ROM)과 머신러닝 대리모델을 결합한 다중 정확도(multi-fidelity) 모델링을 통해, 현실적이고 확률적인(stochastic) 운영 조건 하에서 열시스템을 빠르게 최적화합니다.">Multi-fidelity modeling combining physics-based ROMs with machine learning surrogates to enable rapid optimization of thermal systems under realistic, stochastic operating conditions.</p>
         </div>
       </div>
 
@@ -1459,25 +1519,25 @@
           <div class="project-text">
             <div class="project-num">PROJECT 01</div>
             <div class="project-meta">Reduced-Order Modeling · Machine Learning · Optimization</div>
-            <h4>Composite PCM Design under Stochastic Loads</h4>
-            <div class="project-tagline">Optimal design via physics-based ROM and ML-based surrogate models</div>
+            <h4 data-en="Composite PCM Design under Stochastic Loads" data-ko="확률적 부하 조건 하의 복합 PCM 설계">Composite PCM Design under Stochastic Loads</h4>
+            <div class="project-tagline" data-en="Optimal design via physics-based ROM and ML-based surrogate models" data-ko="물리 기반 ROM과 ML 대리모델을 통한 최적 설계">Optimal design via physics-based ROM and ML-based surrogate models</div>
 
             <div class="project-block">
-              <h5>Concept</h5>
-              <p>A multi-fidelity framework combining 0D/1D/2D reduced-order models with ML surrogates designs composite PCM heat sinks that perform reliably under stochastic, time-varying thermal loads.</p>
+              <h5 data-en="Concept" data-ko="개념">Concept</h5>
+              <p data-en="A multi-fidelity framework combining 0D/1D/2D reduced-order models with ML surrogates designs composite PCM heat sinks that perform reliably under stochastic, time-varying thermal loads." data-ko="0D/1D/2D 차원축소 모델과 ML 대리모델을 결합한 다중 정확도 프레임워크를 통해, 확률적이고 시변하는 열부하에서도 안정적인 성능을 내는 복합 PCM 히트싱크를 설계합니다.">A multi-fidelity framework combining 0D/1D/2D reduced-order models with ML surrogates designs composite PCM heat sinks that perform reliably under stochastic, time-varying thermal loads.</p>
             </div>
 
             <div class="project-block">
-              <h5>Significance</h5>
-              <p>Existing PCM designs are limited to static or periodic loads, leaving a gap for real-world variable loads. Our framework will enable reliability-driven thermal design for data centers and power electronics.</p>
+              <h5 data-en="Significance" data-ko="의의">Significance</h5>
+              <p data-en="Existing PCM designs are limited to static or periodic loads, leaving a gap for real-world variable loads. Our framework will enable reliability-driven thermal design for data centers and power electronics." data-ko="기존 PCM 설계는 정적이거나 주기적인 부하에만 머물러 있어, 실제 환경의 가변 부하에는 공백이 존재합니다. 본 프레임워크는 데이터센터와 전력전자기기를 위한 신뢰성 기반 열설계를 가능하게 합니다.">Existing PCM designs are limited to static or periodic loads, leaving a gap for real-world variable loads. Our framework will enable reliability-driven thermal design for data centers and power electronics.</p>
             </div>
 
             <div class="project-block">
-              <h5>Research Direction</h5>
+              <h5 data-en="Research Direction" data-ko="연구 방향">Research Direction</h5>
               <ul>
-                <li>ROM-based synthetic dataset generation</li>
-                <li>Training of ML surrogate models</li>
-                <li>Bayesian optimization for design discovery</li>
+                <li data-en="ROM-based synthetic dataset generation" data-ko="ROM 기반 합성 데이터셋 생성">ROM-based synthetic dataset generation</li>
+                <li data-en="Training of ML surrogate models" data-ko="ML 대리모델 학습">Training of ML surrogate models</li>
+                <li data-en="Bayesian optimization for design discovery" data-ko="베이지안 최적화 기반 설계 탐색">Bayesian optimization for design discovery</li>
               </ul>
             </div>
 
@@ -1489,7 +1549,7 @@
             </div>
 
             <div class="project-pubs">
-              <div class="project-pubs-label">Related Publications</div>
+              <div class="project-pubs-label" data-en="Related Publications" data-ko="관련 논문">Related Publications</div>
               <ul>
                 <li><a href="https://www.sciencedirect.com/science/article/pii/S0017931023004155" target="_blank" rel="noopener">Phase change material integrated cooling for transient thermal management of electronic devices</a></li>
                 <li><a href="https://www.sciencedirect.com/science/article/pii/S1359431125003278" target="_blank" rel="noopener">Optimal phase change material integration strategies for maximizing electronic device reliability</a></li>
@@ -1500,7 +1560,7 @@
             </div>
 
             <div class="project-collabs">
-              <div class="project-collabs-label">Potential Collaborators</div>
+              <div class="project-collabs-label" data-en="Potential Collaborators" data-ko="협력 가능 연구자">Potential Collaborators</div>
               <ul>
                 <li>
                   <span class="collab-name">Prof. Patrick Shamberger</span>
@@ -1521,8 +1581,8 @@
       <div class="thrust-header">
         <div class="thrust-header-num">THRUST 02</div>
         <div class="thrust-header-content">
-          <h3>Next-generation Cooling Solution Development</h3>
-          <p>Novel cooling mechanisms — including PCM-integrated structures, two-phase, and pressure-tunable approaches — designed to handle transient and high heat-flux loads beyond the capability of conventional steady-state cooling.</p>
+          <h3 data-en="Next-generation Cooling Solution Development" data-ko="차세대 냉각 솔루션 개발">Next-generation Cooling Solution Development</h3>
+          <p data-en="Novel cooling mechanisms — including PCM-integrated structures, two-phase, and pressure-tunable approaches — designed to handle transient and high heat-flux loads beyond the capability of conventional steady-state cooling." data-ko="기존 정상상태 냉각으로는 다루기 어려운 과도·고열유속 부하에 대응하기 위해, PCM 통합 구조 · 이상유동(two-phase) · 압력 가변 방식 등 새로운 냉각 메커니즘을 개발합니다.">Novel cooling mechanisms — including PCM-integrated structures, two-phase, and pressure-tunable approaches — designed to handle transient and high heat-flux loads beyond the capability of conventional steady-state cooling.</p>
         </div>
       </div>
 
@@ -1531,25 +1591,25 @@
           <div class="project-text">
             <div class="project-num">PROJECT 02</div>
             <div class="project-meta">Additive Manufacturing · CFD · Heat Transfer Experiment</div>
-            <h4>3D-Printed Porous Cold Plate–PCM Hybrid</h4>
-            <div class="project-tagline">Combining latent heat storage with convective cooling under pulsed thermal loads</div>
+            <h4 data-en="3D-Printed Porous Cold Plate–PCM Hybrid" data-ko="3D 프린팅 다공성 콜드 플레이트–PCM 하이브리드">3D-Printed Porous Cold Plate–PCM Hybrid</h4>
+            <div class="project-tagline" data-en="Combining latent heat storage with convective cooling under pulsed thermal loads" data-ko="펄스형 열부하에서 잠열 저장과 대류 냉각의 결합">Combining latent heat storage with convective cooling under pulsed thermal loads</div>
 
             <div class="project-block">
-              <h5>Concept</h5>
-              <p>Porous metal cold plates fabricated via additive manufacturing are infiltrated with PCM, integrating latent-heat buffering and liquid cooling into a single device for synergistic thermal performance.</p>
+              <h5 data-en="Concept" data-ko="개념">Concept</h5>
+              <p data-en="Porous metal cold plates fabricated via additive manufacturing are infiltrated with PCM, integrating latent-heat buffering and liquid cooling into a single device for synergistic thermal performance." data-ko="적층제조(AM)로 제작한 다공성 금속 콜드 플레이트에 PCM을 함침시켜, 잠열 버퍼링과 액체 냉각을 하나의 장치 안에서 결합함으로써 시너지 효과를 가진 열성능을 구현합니다.">Porous metal cold plates fabricated via additive manufacturing are infiltrated with PCM, integrating latent-heat buffering and liquid cooling into a single device for synergistic thermal performance.</p>
             </div>
 
             <div class="project-block">
-              <h5>Significance</h5>
-              <p>Peak loads are absorbed by PCM latent heat while average loads are removed by liquid cooling — simultaneously suppressing peak temperatures and temperature swings in high heat-flux electronics.</p>
+              <h5 data-en="Significance" data-ko="의의">Significance</h5>
+              <p data-en="Peak loads are absorbed by PCM latent heat while average loads are removed by liquid cooling — simultaneously suppressing peak temperatures and temperature swings in high heat-flux electronics." data-ko="피크 부하는 PCM의 잠열로 흡수하고, 평균 부하는 액체 냉각으로 제거합니다 — 고열유속 전자기기의 피크 온도와 온도 변동을 동시에 억제할 수 있습니다.">Peak loads are absorbed by PCM latent heat while average loads are removed by liquid cooling — simultaneously suppressing peak temperatures and temperature swings in high heat-flux electronics.</p>
             </div>
 
             <div class="project-block">
-              <h5>Research Direction</h5>
+              <h5 data-en="Research Direction" data-ko="연구 방향">Research Direction</h5>
               <ul>
-                <li>Design optimization of porous metal architectures</li>
-                <li>Effects of PCM filling fraction and channel layout</li>
-                <li>Prototype fabrication and thermal/hydraulic validation</li>
+                <li data-en="Design optimization of porous metal architectures" data-ko="다공성 금속 구조 설계 최적화">Design optimization of porous metal architectures</li>
+                <li data-en="Effects of PCM filling fraction and channel layout" data-ko="PCM 충진율 및 채널 배치 영향 분석">Effects of PCM filling fraction and channel layout</li>
+                <li data-en="Prototype fabrication and thermal/hydraulic validation" data-ko="시제품 제작 및 열·유동 성능 검증">Prototype fabrication and thermal/hydraulic validation</li>
               </ul>
             </div>
 
@@ -1561,8 +1621,8 @@
             </div>
 
             <div class="project-pubs">
-              <div class="project-pubs-label">Related Publications</div>
-              <div class="project-pubs-empty">In preparation</div>
+              <div class="project-pubs-label" data-en="Related Publications" data-ko="관련 논문">Related Publications</div>
+              <div class="project-pubs-empty" data-en="In preparation" data-ko="준비 중">In preparation</div>
             </div>
           </div>
           <div class="project-figure">
@@ -1577,8 +1637,8 @@
       <div class="thrust-header">
         <div class="thrust-header-num">THRUST 03</div>
         <div class="thrust-header-content">
-          <h3>System &amp; Packaging-level Cooling Strategy Integration</h3>
-          <p>Cooling architectures co-designed with electronic packaging — from chip-level interfaces to module- and system-level integration — translating material innovation into real device-level performance gains.</p>
+          <h3 data-en="System &amp; Packaging-level Cooling Strategy Integration" data-ko="시스템·패키지 단위 냉각 전략 통합">System &amp; Packaging-level Cooling Strategy Integration</h3>
+          <p data-en="Cooling architectures co-designed with electronic packaging — from chip-level interfaces to module- and system-level integration — translating material innovation into real device-level performance gains." data-ko="칩 수준의 인터페이스부터 모듈·시스템 단위 통합까지, 전자 패키지와 함께 설계되는 냉각 아키텍처를 통해 재료 혁신을 실제 장치 수준의 성능 향상으로 이어지게 합니다.">Cooling architectures co-designed with electronic packaging — from chip-level interfaces to module- and system-level integration — translating material innovation into real device-level performance gains.</p>
         </div>
       </div>
 
@@ -1587,25 +1647,25 @@
           <div class="project-text">
             <div class="project-num">PROJECT 03</div>
             <div class="project-meta">Active PCM · System Integration · Control</div>
-            <h4>Dynamic PCM Integrated Cooling System</h4>
-            <div class="project-tagline">Pressure-driven active PCM that maintains thin melt layers for sustained cooling</div>
+            <h4 data-en="Dynamic PCM Integrated Cooling System" data-ko="동적 PCM 통합 냉각 시스템">Dynamic PCM Integrated Cooling System</h4>
+            <div class="project-tagline" data-en="Pressure-driven active PCM that maintains thin melt layers for sustained cooling" data-ko="얇은 융해층을 유지하여 지속 냉각을 가능케 하는 가압 구동 능동 PCM">Pressure-driven active PCM that maintains thin melt layers for sustained cooling</div>
 
             <div class="project-block">
-              <h5>Concept</h5>
-              <p>By applying mechanical pressure to solid PCM, the melted liquid is actively expelled — sustaining close-contact melting and preventing the cooling degradation that occurs as the melt layer thickens in conventional bulk PCM systems.</p>
+              <h5 data-en="Concept" data-ko="개념">Concept</h5>
+              <p data-en="By applying mechanical pressure to solid PCM, the melted liquid is actively expelled — sustaining close-contact melting and preventing the cooling degradation that occurs as the melt layer thickens in conventional bulk PCM systems." data-ko="고체 PCM에 기계적 압력을 가하여 융해된 액체를 능동적으로 배출함으로써 밀착 융해(close-contact melting)를 유지합니다 — 기존 벌크 PCM 시스템에서 융해층이 두꺼워지며 발생하는 냉각 성능 저하를 방지합니다.">By applying mechanical pressure to solid PCM, the melted liquid is actively expelled — sustaining close-contact melting and preventing the cooling degradation that occurs as the melt layer thickens in conventional bulk PCM systems.</p>
             </div>
 
             <div class="project-block">
-              <h5>Significance</h5>
-              <p>Solves the fundamental performance-decay problem of bulk PCM cooling, lowering peak temperature and reducing system-level cooling burden — enabling effective transient thermal management for high-power-density electronics.</p>
+              <h5 data-en="Significance" data-ko="의의">Significance</h5>
+              <p data-en="Solves the fundamental performance-decay problem of bulk PCM cooling, lowering peak temperature and reducing system-level cooling burden — enabling effective transient thermal management for high-power-density electronics." data-ko="벌크 PCM 냉각의 본질적 성능 감쇠 문제를 해결하여 피크 온도를 낮추고 시스템 차원의 냉각 부담을 줄입니다 — 고전력밀도 전자기기를 위한 효과적인 과도 열관리를 실현합니다.">Solves the fundamental performance-decay problem of bulk PCM cooling, lowering peak temperature and reducing system-level cooling burden — enabling effective transient thermal management for high-power-density electronics.</p>
             </div>
 
             <div class="project-block">
-              <h5>Research Direction</h5>
+              <h5 data-en="Research Direction" data-ko="연구 방향">Research Direction</h5>
               <ul>
-                <li>ROM-based design optimization</li>
-                <li>Integrated automatic pressurization &amp; drainage system</li>
-                <li>Reusable, modular dynPCM cooling modules</li>
+                <li data-en="ROM-based design optimization" data-ko="ROM 기반 설계 최적화">ROM-based design optimization</li>
+                <li data-en="Integrated automatic pressurization &amp; drainage system" data-ko="자동 가압·배출 통합 시스템">Integrated automatic pressurization &amp; drainage system</li>
+                <li data-en="Reusable, modular dynPCM cooling modules" data-ko="재사용 가능한 모듈식 dynPCM 냉각 모듈">Reusable, modular dynPCM cooling modules</li>
               </ul>
             </div>
 
@@ -1617,7 +1677,7 @@
             </div>
 
             <div class="project-pubs">
-              <div class="project-pubs-label">Related Publications</div>
+              <div class="project-pubs-label" data-en="Related Publications" data-ko="관련 논문">Related Publications</div>
               <ul>
                 <li><a href="https://www.sciencedirect.com/science/article/pii/S0017931024012614" target="_blank" rel="noopener">Cooling high power electronics using dynamic phase change material</a></li>
                 <li><a href="https://pubs.aip.org/aip/apl/article/125/6/064103/3306538" target="_blank" rel="noopener">Dynamic phase change materials with extended surfaces</a></li>
@@ -1629,7 +1689,7 @@
             </div>
 
             <div class="project-collabs">
-              <div class="project-collabs-label">Potential Collaborators</div>
+              <div class="project-collabs-label" data-en="Potential Collaborators" data-ko="협력 가능 연구자">Potential Collaborators</div>
               <ul>
                 <li>
                   <span class="collab-name">Prof. William P. King</span>
@@ -1651,25 +1711,25 @@
           <div class="project-text">
             <div class="project-num">PROJECT 04</div>
             <div class="project-meta">Refrigeration · Materials · Device Design</div>
-            <h4>Barocaloric Material System-Level Cooling</h4>
-            <div class="project-tagline">Next-generation solid-state PCM refrigerants controlled by hydrostatic pressure</div>
+            <h4 data-en="Barocaloric Material System-Level Cooling" data-ko="압전(barocaloric) 소재 기반 시스템 단위 냉각">Barocaloric Material System-Level Cooling</h4>
+            <div class="project-tagline" data-en="Next-generation solid-state PCM refrigerants controlled by hydrostatic pressure" data-ko="정수압으로 제어되는 차세대 고체상 PCM 냉매">Next-generation solid-state PCM refrigerants controlled by hydrostatic pressure</div>
 
             <div class="project-block">
-              <h5>Concept</h5>
-              <p>A gas-pressurized, module-scale barocaloric heat-transfer test platform enabling simultaneous measurement of pressure-driven thermal effects and heat transfer, with a path toward system-level integration.</p>
+              <h5 data-en="Concept" data-ko="개념">Concept</h5>
+              <p data-en="A gas-pressurized, module-scale barocaloric heat-transfer test platform enabling simultaneous measurement of pressure-driven thermal effects and heat transfer, with a path toward system-level integration." data-ko="가스 가압식 모듈 단위의 압전 열전달 테스트 플랫폼을 구축하여, 압력 구동 열효과와 열전달을 동시에 측정할 수 있도록 합니다. 이를 시스템 단위 통합으로까지 확장하는 경로를 제시합니다.">A gas-pressurized, module-scale barocaloric heat-transfer test platform enabling simultaneous measurement of pressure-driven thermal effects and heat transfer, with a path toward system-level integration.</p>
             </div>
 
             <div class="project-block">
-              <h5>Significance</h5>
-              <p>Existing barocaloric studies are limited to milligram-scale property characterization, making real-world heat-transfer behavior difficult to assess. This platform will evaluate barocaloric performance and heat transfer at the module level — bridging materials and system for next-generation HVAC refrigerants.</p>
+              <h5 data-en="Significance" data-ko="의의">Significance</h5>
+              <p data-en="Existing barocaloric studies are limited to milligram-scale property characterization, making real-world heat-transfer behavior difficult to assess. This platform will evaluate barocaloric performance and heat transfer at the module level — bridging materials and system for next-generation HVAC refrigerants." data-ko="기존 압전 소재 연구는 mg 수준의 물성 측정에 머물러 있어 실제 열전달 거동을 평가하기 어렵습니다. 본 플랫폼은 모듈 단위에서 압전 성능과 열전달을 평가하여, 차세대 HVAC 냉매를 위한 소재와 시스템 사이의 가교 역할을 합니다.">Existing barocaloric studies are limited to milligram-scale property characterization, making real-world heat-transfer behavior difficult to assess. This platform will evaluate barocaloric performance and heat transfer at the module level — bridging materials and system for next-generation HVAC refrigerants.</p>
             </div>
 
             <div class="project-block">
-              <h5>Research Direction</h5>
+              <h5 data-en="Research Direction" data-ko="연구 방향">Research Direction</h5>
               <ul>
-                <li>Advanced gas-pressurized tube module design (1–100 bar)</li>
-                <li>Temperature-scanning calorimetry &amp; dynamics</li>
-                <li>Cycle &amp; system-level modeling for HVAC scale-up</li>
+                <li data-en="Advanced gas-pressurized tube module design (1–100 bar)" data-ko="고도화된 가스 가압 튜브 모듈 설계 (1–100 bar)">Advanced gas-pressurized tube module design (1–100 bar)</li>
+                <li data-en="Temperature-scanning calorimetry &amp; dynamics" data-ko="온도 스캐닝 열량측정 및 동특성 분석">Temperature-scanning calorimetry &amp; dynamics</li>
+                <li data-en="Cycle &amp; system-level modeling for HVAC scale-up" data-ko="HVAC 규모 확장을 위한 사이클 및 시스템 모델링">Cycle &amp; system-level modeling for HVAC scale-up</li>
               </ul>
             </div>
 
@@ -1681,12 +1741,12 @@
             </div>
 
             <div class="project-pubs">
-              <div class="project-pubs-label">Related Publications</div>
-              <div class="project-pubs-empty">In preparation</div>
+              <div class="project-pubs-label" data-en="Related Publications" data-ko="관련 논문">Related Publications</div>
+              <div class="project-pubs-empty" data-en="In preparation" data-ko="준비 중">In preparation</div>
             </div>
 
             <div class="project-collabs">
-              <div class="project-collabs-label">Potential Collaborators</div>
+              <div class="project-collabs-label" data-en="Potential Collaborators" data-ko="협력 가능 연구자">Potential Collaborators</div>
               <ul>
                 <li>
                   <span class="collab-name">Prof. Patrick Shamberger</span>
@@ -1709,21 +1769,21 @@
 <section id="publications">
   <div class="container">
     <div class="section-header">
-      <div class="eyebrow">// 03 — Publications</div>
-      <h2>Peer-reviewed publications.</h2>
-      <p class="section-lead">Selected journal articles in heat transfer, phase change materials, and integrated photonics. For the most up-to-date list and citation metrics, please visit Google Scholar.</p>
+      <div class="eyebrow" data-en="// 03 — Publications" data-ko="// 03 — 논문">// 03 — Publications</div>
+      <h2 data-en="Peer-reviewed publications." data-ko="Peer-reviewed publications.">Peer-reviewed publications.</h2>
+      <p class="section-lead" data-en="Selected journal articles in heat transfer and phase change materials. For the most up-to-date list and citation metrics, please visit Google Scholar." data-ko="열전달과 상변화물질 분야의 주요 저널 논문입니다. 최신 목록과 인용 지표는 Google Scholar에서 확인하실 수 있습니다.">Selected journal articles in heat transfer and phase change materials. For the most up-to-date list and citation metrics, please visit Google Scholar.</p>
     </div>
 
     <div class="pub-actions">
       <a href="https://scholar.google.com/citations?user=-PKWrsMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" class="btn btn-primary">Google Scholar →</a>
-      <a href="Soonwook_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Download CV</a>
+      <a href="Soonwook_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost" data-en="Download CV" data-ko="CV 다운로드">Download CV</a>
     </div>
 
     <!-- 2026 -->
     <div class="pub-group">
       <div class="pub-group-header">
         <h3>2026</h3>
-        <span class="pub-group-count">3 papers</span>
+        <span class="pub-group-count" data-en="3 papers" data-ko="논문 3편">3 papers</span>
       </div>
       <div class="pub-list">
         <div class="pub-item">
@@ -1774,7 +1834,7 @@
     <div class="pub-group">
       <div class="pub-group-header">
         <h3>2025</h3>
-        <span class="pub-group-count">4 papers</span>
+        <span class="pub-group-count" data-en="4 papers" data-ko="논문 4편">4 papers</span>
       </div>
       <div class="pub-list">
         <div class="pub-item">
@@ -1839,13 +1899,13 @@
     <div class="pub-group">
       <div class="pub-group-header">
         <h3>2024</h3>
-        <span class="pub-group-count">2 papers</span>
+        <span class="pub-group-count" data-en="2 papers" data-ko="논문 2편">2 papers</span>
       </div>
       <div class="pub-list">
         <div class="pub-item">
           <div class="pub-meta">
             <span class="pub-year">2024</span>
-            <span class="pub-badge editors">Editor's Pick</span>
+            <span class="pub-badge editors" data-en="Editor's Pick" data-ko="편집장 추천">Editor's Pick</span>
           </div>
           <div class="pub-authors">
             R. A. Stavins, <span class="self">S. Kim</span>, A. Meddling, V. S. Garimella, E. Koronio, T. Shockner, G. Ziskind, N. Miljkovic, W. P. King
@@ -1877,7 +1937,7 @@
     <div class="pub-group">
       <div class="pub-group-header">
         <h3>2023</h3>
-        <span class="pub-group-count">3 papers</span>
+        <span class="pub-group-count" data-en="3 papers" data-ko="논문 3편">3 papers</span>
       </div>
       <div class="pub-list">
         <div class="pub-item">
@@ -1928,13 +1988,13 @@
     <div class="pub-group">
       <div class="pub-group-header">
         <h3>2021</h3>
-        <span class="pub-group-count">1 paper</span>
+        <span class="pub-group-count" data-en="1 paper" data-ko="논문 1편">1 paper</span>
       </div>
       <div class="pub-list">
         <div class="pub-item">
           <div class="pub-meta">
             <span class="pub-year">2021</span>
-            <span class="pub-badge editors">Editor's Pick</span>
+            <span class="pub-badge editors" data-en="Editor's Pick" data-ko="편집장 추천">Editor's Pick</span>
           </div>
           <div class="pub-authors">
             <span class="self">S. Kim</span>, D. B. Sohn, C. W. Peterson, G. Bahl
@@ -1954,19 +2014,19 @@
 <section id="news">
   <div class="container">
     <div class="section-header">
-      <div class="eyebrow">// 04 — Recent</div>
-      <h2>Lab news &amp; updates.</h2>
+      <div class="eyebrow" data-en="// 04 — Recent" data-ko="// 04 — 최근 소식">// 04 — Recent</div>
+      <h2 data-en="Lab news &amp; updates." data-ko="Lab news &amp; updates.">Lab news &amp; updates.</h2>
     </div>
     <div class="news-list">
       <div class="news-item">
         <div class="news-date">2026.04</div>
-        <div class="news-tag">Conference</div>
-        <div class="news-text">Attended the Korean Society of Mechanical Engineers (KSME) annual meeting.</div>
+        <div class="news-tag" data-en="Conference" data-ko="학회">Conference</div>
+        <div class="news-text" data-en="Attended the Korean Society of Mechanical Engineers (KSME) annual meeting." data-ko="대한기계학회(KSME) 연례 학술대회에 참석했습니다.">Attended the Korean Society of Mechanical Engineers (KSME) annual meeting.</div>
       </div>
       <div class="news-item">
         <div class="news-date">2026.03</div>
-        <div class="news-tag">Lab</div>
-        <div class="news-text">ATTS Lab officially launches at Kyung Hee University. Recruiting motivated M.S./Ph.D. students.</div>
+        <div class="news-tag" data-en="Lab" data-ko="연구실">Lab</div>
+        <div class="news-text" data-en="ATTS Lab officially launches at Kyung Hee University. Recruiting motivated M.S./Ph.D. students." data-ko="ATTS Lab이 경희대학교에서 공식 출범했습니다. 의욕 있는 석·박사 과정 학생을 모집합니다.">ATTS Lab officially launches at Kyung Hee University. Recruiting motivated M.S./Ph.D. students.</div>
       </div>
     </div>
   </div>
@@ -1974,15 +2034,15 @@
 
 <section id="join" class="join-section">
   <div class="join-card">
-    <div class="eyebrow">// 05 — Join Us</div>
-    <h2>Build the future of thermal systems with us.</h2>
-    <p>We're actively recruiting motivated Ph.D. and M.S. students and undergraduate researchers passionate about heat transfer, materials, and computational modeling. All four research projects are available as thesis topics.</p>
+    <div class="eyebrow" data-en="// 05 — Join Us" data-ko="// 05 — 합류하기">// 05 — Join Us</div>
+    <h2 data-en="Build the future of thermal systems with us." data-ko="열시스템의 미래를 함께 만들어 갈 분을 찾습니다.">Build the future of thermal systems with us.</h2>
+    <p data-en="We're actively recruiting motivated Ph.D. and M.S. students and undergraduate researchers passionate about heat transfer, materials, and computational modeling. All four research projects are available as thesis topics." data-ko="열전달, 재료, 전산 모델링에 열정을 가진 박사 과정·석사 과정 대학원생, 그리고 학부 연구생을 적극적으로 모집합니다. 네 가지 연구 프로젝트 모두 학위 주제로 선택할 수 있습니다.">We're actively recruiting motivated Ph.D. and M.S. students and undergraduate researchers passionate about heat transfer, materials, and computational modeling. All four research projects are available as thesis topics.</p>
     <div class="opportunities">
-      <span class="opp-pill">Ph.D. Students</span>
-      <span class="opp-pill">M.S. Students</span>
-      <span class="opp-pill">Undergrad Researchers</span>
+      <span class="opp-pill" data-en="Ph.D. Students" data-ko="박사 과정">Ph.D. Students</span>
+      <span class="opp-pill" data-en="M.S. Students" data-ko="석사 과정">M.S. Students</span>
+      <span class="opp-pill" data-en="Undergrad Researchers" data-ko="학부 연구생">Undergrad Researchers</span>
     </div>
-    <a href="mailto:snookim@khu.ac.kr" class="btn btn-primary">Get in Touch →</a>
+    <a href="mailto:snookim@khu.ac.kr" class="btn btn-primary" data-en="Get in Touch →" data-ko="문의하기 →">Get in Touch →</a>
   </div>
 </section>
 
@@ -1993,19 +2053,19 @@
         <div class="logo-mark">A</div>
         <span>ATTS Lab</span>
       </a>
-      <p>Advanced Transient Thermal Systems Lab. Department of Mechanical Engineering, Kyung Hee University, Yongin, South Korea. Office: Woojeongwon 6016.</p>
+      <p data-en="Advanced Transient Thermal Systems Lab. Mechanical Engineering, Kyung Hee University, Yongin, South Korea. Office: Woojeongwon 6016." data-ko="첨단 과도 열시스템 연구실(ATTS Lab) · 경희대학교 기계공학부 (대한민국 용인시) · 우정원 6016호">Advanced Transient Thermal Systems Lab. Mechanical Engineering, Kyung Hee University, Yongin, South Korea. Office: Woojeongwon 6016.</p>
     </div>
     <div class="footer-col">
-      <h4>Lab</h4>
+      <h4 data-en="Lab" data-ko="연구실">Lab</h4>
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#news">News</a></li>
+        <li><a href="#about" data-en="About" data-ko="소개">About</a></li>
+        <li><a href="#research" data-en="Research" data-ko="연구">Research</a></li>
+        <li><a href="#publications" data-en="Publications" data-ko="논문">Publications</a></li>
+        <li><a href="#news" data-en="News" data-ko="소식">News</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Connect</h4>
+      <h4 data-en="Connect" data-ko="연결">Connect</h4>
       <ul>
         <li><a href="mailto:snookim@khu.ac.kr">snookim@khu.ac.kr</a></li>
         <li><a href="https://scholar.google.com/citations?user=-PKWrsMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a></li>
@@ -2014,18 +2074,84 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Teaching</h4>
+      <h4 data-en="Teaching" data-ko="강의">Teaching</h4>
       <ul>
-        <li><a href="#">Intro to Engineering Programming</a></li>
-        <li><a href="#">Heat Transfer</a></li>
+        <li><a href="#" data-en="Intro to Engineering Programming" data-ko="공학 프로그래밍 입문">Intro to Engineering Programming</a></li>
+        <li><a href="#" data-en="Heat Transfer" data-ko="열전달">Heat Transfer</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 ATTS Lab. All rights reserved.</span>
+    <span data-en="© 2026 ATTS Lab. All rights reserved." data-ko="© 2026 ATTS Lab. All rights reserved.">© 2026 ATTS Lab. All rights reserved.</span>
     <span>Kyung Hee University · 경희대학교</span>
   </div>
 </footer>
+
+<script>
+(function(){
+  // Language toggle: switches all data-en / data-ko (and data-en-html / data-ko-html) elements
+  var STORAGE_KEY = 'atts-lang';
+  var supported = ['en', 'ko'];
+
+  function getLang(){
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && supported.indexOf(saved) !== -1) return saved;
+    } catch(e) {}
+    // Default to Korean for first-time visitors
+    return 'ko';
+  }
+
+  function applyLang(lang){
+    // Plain text elements
+    var nodes = document.querySelectorAll('[data-en], [data-ko]');
+    for (var i = 0; i < nodes.length; i++){
+      var el = nodes[i];
+      // Skip elements that have HTML version (handled separately below)
+      if (el.hasAttribute('data-en-html') || el.hasAttribute('data-ko-html')) continue;
+      var v = el.getAttribute('data-' + lang);
+      if (v != null) el.textContent = v;
+    }
+    // HTML-content elements (preserve inner tags like <span>, <strong>, <br>)
+    var htmlNodes = document.querySelectorAll('[data-en-html], [data-ko-html]');
+    for (var j = 0; j < htmlNodes.length; j++){
+      var elH = htmlNodes[j];
+      var vH = elH.getAttribute('data-' + lang + '-html');
+      if (vH != null) elH.innerHTML = vH;
+    }
+    // Update toggle button states
+    var btns = document.querySelectorAll('.lang-toggle button[data-lang]');
+    for (var k = 0; k < btns.length; k++){
+      btns[k].classList.toggle('active', btns[k].getAttribute('data-lang') === lang);
+    }
+    // Update <html lang> for accessibility & SEO
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  function setLang(lang){
+    if (supported.indexOf(lang) === -1) return;
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch(e) {}
+    applyLang(lang);
+  }
+
+  // Wire up clicks (script is at end of body, DOM already parsed)
+  function init(){
+    var btns = document.querySelectorAll('.lang-toggle button[data-lang]');
+    for (var i = 0; i < btns.length; i++){
+      btns[i].addEventListener('click', function(){
+        setLang(this.getAttribute('data-lang'));
+      });
+    }
+    // Apply initial language
+    applyLang(getLang());
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 
 </body>
 </html>
