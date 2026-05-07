@@ -690,6 +690,42 @@
     order: 1;
   }
 
+  /* Wide-aspect figures: stack text on top, figure full-width below */
+  .project.figure-wide{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .project.figure-wide .project-text{ order: 1; }
+  .project.figure-wide .project-figure{ order: 2; }
+  .project.figure-wide .project-figure img{
+    max-height: 360px;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Tall-aspect figures: constrain image height to prevent oversize */
+  .project.figure-tall .project-figure img{
+    max-height: 480px;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Slightly-wide figures: more balanced columns + tighter figure padding */
+  .project.figure-balanced{
+    grid-template-columns: 1fr 1.5fr;
+  }
+  .project.figure-balanced .project-figure{
+    padding: 12px;
+    align-self: stretch;
+  }
+  .project.figure-balanced .project-figure img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
   .project-text{
     display: flex;
     flex-direction: column;
@@ -1210,9 +1246,16 @@
     .about-grid{ grid-template-columns: 1fr; }
     .pi-card{ position: static; }
     .project,
-    .project.figure-left{ grid-template-columns: 1fr; }
-    .project.figure-left .project-text{ order: 0; }
-    .project.figure-left .project-figure{ order: 0; }
+    .project.figure-left,
+    .project.figure-wide,
+    .project.figure-tall,
+    .project.figure-balanced{ grid-template-columns: 1fr; }
+    .project.figure-left .project-text,
+    .project.figure-wide .project-text{ order: 0; }
+    .project.figure-left .project-figure,
+    .project.figure-wide .project-figure{ order: 0; }
+    .project.figure-tall .project-figure img,
+    .project.figure-wide .project-figure img{ max-height: 320px; }
     .thrust-header{ flex-direction: column; gap: 8px; padding: 20px; }
     .news-item{ grid-template-columns: 1fr; gap: 8px; padding: 20px; }
     .footer-inner{ grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -1412,7 +1455,7 @@
       </div>
 
       <div class="project-list">
-        <div class="project">
+        <div class="project figure-tall">
           <div class="project-text">
             <div class="project-num">PROJECT 01</div>
             <div class="project-meta">Reduced-Order Modeling · Machine Learning · Optimization</div>
@@ -1484,7 +1527,7 @@
       </div>
 
       <div class="project-list">
-        <div class="project figure-left">
+        <div class="project figure-wide">
           <div class="project-text">
             <div class="project-num">PROJECT 02</div>
             <div class="project-meta">Additive Manufacturing · CFD · Heat Transfer Experiment</div>
@@ -1540,7 +1583,7 @@
       </div>
 
       <div class="project-list">
-        <div class="project">
+        <div class="project figure-balanced">
           <div class="project-text">
             <div class="project-num">PROJECT 03</div>
             <div class="project-meta">Active PCM · System Integration · Control</div>
@@ -1604,7 +1647,7 @@
           </div>
         </div>
 
-        <div class="project figure-left">
+        <div class="project figure-wide">
           <div class="project-text">
             <div class="project-num">PROJECT 04</div>
             <div class="project-meta">Refrigeration · Materials · Device Design</div>
