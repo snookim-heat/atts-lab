@@ -853,6 +853,83 @@
     color: var(--text-muted);
   }
 
+  /* Potential collaborators inside project cards */
+  .project-collabs{
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--border-strong);
+  }
+  .project-collabs-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--heat-orange);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .project-collabs-label::before{
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--heat-orange), var(--heat-amber));
+    border-radius: 1px;
+  }
+  .project-collabs ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .project-collabs ul li{
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    padding-left: 14px;
+    position: relative;
+  }
+  .project-collabs ul li::before{
+    content: '◆';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--heat-amber);
+    font-size: 9px;
+    transform: translateY(2px);
+  }
+  .project-collabs .collab-name{
+    color: var(--text);
+    font-weight: 600;
+  }
+  .project-collabs .collab-lab{
+    color: var(--text-muted);
+    font-size: 12px;
+    display: block;
+    margin-top: 1px;
+  }
+  .project-collabs .collab-lab a{
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    border-bottom: 1px dotted var(--border-strong);
+  }
+  .project-collabs .collab-lab a:hover{
+    color: var(--heat-red);
+    border-bottom-color: var(--heat-orange);
+  }
+  .project-collabs .collab-affil{
+    color: var(--text-muted);
+    font-size: 11.5px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
   .project-figure{
     background: var(--surface-2);
     border: 1px solid var(--border);
@@ -1291,7 +1368,7 @@
   <div class="container">
     <div class="section-header">
       <div class="eyebrow">// 02 — Research</div>
-      <h2>Four projects to launch at Kyung Hee University.</h2>
+      <h2>Four projects to launch at <span style="white-space: nowrap;">Kyung Hee University</span>.</h2>
       <p class="section-lead">Our upcoming research integrates material innovation with system co-design to address the growing thermal challenges in modern electronics. We plan to pursue four research projects, organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration.</p>
     </div>
 
@@ -1376,6 +1453,16 @@
                 <li><a href="https://www.tandfonline.com/doi/abs/10.1080/10407790.2023.2273513" target="_blank" rel="noopener">Gaussian process optimization of phase change material heat sink design</a></li>
                 <li><a href="https://www.sciencedirect.com/science/article/pii/S0017931026001699" target="_blank" rel="noopener">Heat transfer coefficient effect on thermal impedance of phase change composites</a></li>
                 <li><a href="https://pubs.acs.org/doi/abs/10.1021/acsaenm.3c00366" target="_blank" rel="noopener">Fabrication and thermal properties of a gallium and porous foam composite phase change material</a></li>
+              </ul>
+            </div>
+
+            <div class="project-collabs">
+              <div class="project-collabs-label">Potential Collaborators</div>
+              <ul>
+                <li>
+                  <span class="collab-name">Prof. Patrick Shamberger</span>
+                  <span class="collab-lab"><a href="https://phate.tamu.edu/patrick-shamberger/" target="_blank" rel="noopener">PHATE Lab</a> · <span class="collab-affil">Texas A&amp;M University</span></span>
+                </li>
               </ul>
             </div>
           </div>
@@ -1497,6 +1584,20 @@
                 <li><a href="https://www.sciencedirect.com/science/article/pii/S0017931026001833" target="_blank" rel="noopener">Analysis of dynamic phase change materials</a></li>
               </ul>
             </div>
+
+            <div class="project-collabs">
+              <div class="project-collabs-label">Potential Collaborators</div>
+              <ul>
+                <li>
+                  <span class="collab-name">Prof. William P. King</span>
+                  <span class="collab-lab"><a href="https://kinglab.mechse.illinois.edu/" target="_blank" rel="noopener">Intelligent Manufacturing and Thermal Systems Laboratory</a> · <span class="collab-affil">UIUC</span></span>
+                </li>
+                <li>
+                  <span class="collab-name">Prof. Nenad Miljkovic</span>
+                  <span class="collab-lab"><a href="https://etrl.mechanical.illinois.edu/education.html" target="_blank" rel="noopener">Energy Transport Research Lab</a> · <span class="collab-affil">UIUC</span></span>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="project-figure">
             <img src="research-3.png" alt="Conventional PCM vs dynPCM cooling comparison and performance"/>
@@ -1539,6 +1640,16 @@
             <div class="project-pubs">
               <div class="project-pubs-label">Related Publications</div>
               <div class="project-pubs-empty">In preparation</div>
+            </div>
+
+            <div class="project-collabs">
+              <div class="project-collabs-label">Potential Collaborators</div>
+              <ul>
+                <li>
+                  <span class="collab-name">Prof. Patrick Shamberger</span>
+                  <span class="collab-lab"><a href="https://phate.tamu.edu/patrick-shamberger/" target="_blank" rel="noopener">PHATE Lab</a> · <span class="collab-affil">Texas A&amp;M University</span></span>
+                </li>
+              </ul>
             </div>
           </div>
           <div class="project-figure">
