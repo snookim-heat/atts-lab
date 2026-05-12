@@ -363,12 +363,158 @@
     color: var(--text-dim);
     line-height: 1.7;
   }
+  .section-lead a{
+    color: var(--heat-red);
+    text-decoration: none;
+    border-bottom: 1px solid var(--heat-orange);
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+  .section-lead a:hover{
+    color: var(--heat-hot);
+    border-bottom-color: var(--heat-red);
+  }
 
   .about-grid{
     display: grid;
     grid-template-columns: 300px 1fr;
     gap: 64px;
     align-items: start;
+  }
+
+  /* People section subsections (PI / Students) */
+  .people-subsection{
+    margin-top: 64px;
+  }
+  .people-subsection:first-of-type{
+    margin-top: 0;
+  }
+  .subsection-header{
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid transparent;
+    border-image: var(--heat-gradient) 1;
+  }
+  .subsection-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--heat-red);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+  .subsection-title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .subsection-count{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  /* Student cards grid */
+  .students-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .student-card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 22px;
+    transition: all 0.25s;
+    text-align: center;
+  }
+  .student-card:hover{
+    border-color: rgba(220,38,38,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220,38,38,0.06);
+  }
+  .student-photo{
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    margin: 0 auto 14px;
+    overflow: hidden;
+    border: 2px solid var(--border);
+  }
+  .student-photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .student-name{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+    letter-spacing: -0.01em;
+  }
+  .student-name-kr{
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .student-role{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--heat-orange);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .student-topic{
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* Students placeholder (when no students yet) */
+  .students-placeholder{
+    background: var(--surface-2);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-md);
+    padding: 48px 32px;
+    text-align: center;
+    color: var(--text-muted);
+  }
+  .students-placeholder-icon{
+    font-size: 32px;
+    margin-bottom: 12px;
+    opacity: 0.4;
+  }
+  .students-placeholder-title{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .students-placeholder-text{
+    font-size: 13.5px;
+    line-height: 1.55;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .students-placeholder-text a{
+    color: var(--heat-red);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--heat-orange);
+  }
+  .students-placeholder-text a:hover{
+    color: var(--heat-hot);
   }
   .pi-card{
     position: sticky;
@@ -566,6 +712,55 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     margin-bottom: 64px;
+  }
+
+  /* Roadmap status note */
+  .roadmap-note{
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 22px;
+    background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(220,38,38,0.03));
+    border: 1px solid rgba(234,88,12,0.2);
+    border-left: 3px solid var(--heat-orange);
+    border-radius: var(--r-md);
+    margin-bottom: 36px;
+  }
+  .roadmap-note-icon{
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--heat-gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .roadmap-note-content{
+    flex: 1;
+  }
+  .roadmap-note-label{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--heat-red);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .roadmap-note-text{
+    font-size: 14.5px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .roadmap-note-text strong{
+    color: var(--text);
+    font-weight: 600;
   }
   .overview-card{
     background: var(--surface);
@@ -1332,7 +1527,7 @@
       <span>ATTS Lab</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#about" data-en="About" data-ko="소개">About</a></li>
+      <li><a href="#about" data-en="People" data-ko="구성원">People</a></li>
       <li><a href="#research" data-en="Research" data-ko="연구">Research</a></li>
       <li><a href="#publications" data-en="Publications" data-ko="논문">Publications</a></li>
       <li><a href="#news" data-en="News" data-ko="소식">News</a></li>
@@ -1395,10 +1590,17 @@
 <section id="about">
   <div class="container">
     <div class="section-header">
-      <div class="eyebrow" data-en="// 01 — About" data-ko="// 01 — 소개">// 01 — About</div>
+      <div class="eyebrow" data-en="// 01 — People" data-ko="// 01 — 구성원">// 01 — People</div>
       <h2 data-en="Bridging materials, heat transfer, and system design." data-ko="Bridging materials, heat transfer, and system design.">Bridging materials, heat transfer, and system design.</h2>
     </div>
-    <div class="about-grid">
+
+    <!-- ============ PI SUBSECTION ============ -->
+    <div class="people-subsection">
+      <div class="subsection-header">
+        <span class="subsection-label">// PI</span>
+        <h3 class="subsection-title" data-en="Principal Investigator" data-ko="책임연구원">Principal Investigator</h3>
+      </div>
+      <div class="about-grid">
       <aside class="pi-card">
         <div class="pi-photo">
           <img src="pi-photo.jpg" alt="Soonwook Kim, Principal Investigator"/>
@@ -1463,7 +1665,42 @@
           </div>
         </div>
       </div>
+      </div>
     </div>
+    <!-- ============ /PI SUBSECTION ============ -->
+
+    <!-- ============ STUDENTS SUBSECTION ============ -->
+    <div class="people-subsection">
+      <div class="subsection-header">
+        <span class="subsection-label">// STUDENTS</span>
+        <h3 class="subsection-title" data-en="Students &amp; Researchers" data-ko="학생 및 연구원">Students &amp; Researchers</h3>
+      </div>
+
+      <!-- When students join, replace this placeholder with a .students-grid containing .student-card elements -->
+      <div class="students-placeholder">
+        <div class="students-placeholder-icon">◌</div>
+        <div class="students-placeholder-title" data-en="Recruiting our founding members" data-ko="창립 멤버를 모집하고 있습니다">Recruiting our founding members</div>
+        <div class="students-placeholder-text" data-en-html="ATTS Lab is actively recruiting Ph.D., M.S., and undergraduate researchers. If you're excited about thermal systems and want to be part of building this lab from the ground up, &lt;a href=&quot;#join&quot;&gt;reach out&lt;/a&gt;." data-ko-html="ATTS Lab은 박사·석사·학부 연구생을 적극적으로 모집하고 있습니다. 열시스템에 대한 열정과 함께 새로운 연구실을 처음부터 함께 만들어 갈 분이라면, &lt;a href=&quot;#join&quot;&gt;언제든 연락 주세요&lt;/a&gt;.">ATTS Lab is actively recruiting Ph.D., M.S., and undergraduate researchers. If you're excited about thermal systems and want to be part of building this lab from the ground up, <a href="#join">reach out</a>.</div>
+      </div>
+
+      <!--
+      EXAMPLE STUDENT CARD STRUCTURE - to add a student, copy and customize:
+
+      <div class="students-grid">
+        <div class="student-card">
+          <div class="student-photo">
+            <img src="student-name.jpg" alt="Student Name"/>
+          </div>
+          <div class="student-name">John Doe</div>
+          <div class="student-name-kr">홍길동</div>
+          <div class="student-role" data-en="Ph.D. Student" data-ko="박사 과정">Ph.D. Student</div>
+          <div class="student-topic" data-en="Dynamic PCM cooling systems" data-ko="동적 PCM 냉각 시스템">Dynamic PCM cooling systems</div>
+        </div>
+      </div>
+      -->
+    </div>
+    <!-- ============ /STUDENTS SUBSECTION ============ -->
+
   </div>
 </section>
 
@@ -1472,7 +1709,7 @@
     <div class="section-header">
       <div class="eyebrow" data-en="// 02 — Research" data-ko="// 02 — 연구">// 02 — Research</div>
       <h2 data-en-html="Four projects to launch at &lt;span style=&quot;white-space: nowrap;&quot;&gt;Kyung Hee University&lt;/span&gt;." data-ko-html="Four projects to launch at &lt;span style=&quot;white-space: nowrap;&quot;&gt;Kyung Hee University&lt;/span&gt;.">Four projects to launch at <span style="white-space: nowrap;">Kyung Hee University</span>.</h2>
-      <p class="section-lead" data-en="Our upcoming research integrates material innovation with system co-design to address the growing thermal challenges in modern electronics. We plan to pursue four research projects, organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration." data-ko="ATTS Lab은 재료 혁신과 시스템 공동설계를 결합해 현대 전자기기의 열관리 문제를 해결하고자 합니다. AI 기반 설계, 차세대 냉각 솔루션, 시스템 통합이라는 세 가지 연구 축 아래에서 네 개의 프로젝트를 진행할 예정입니다.">Our upcoming research integrates material innovation with system co-design to address the growing thermal challenges in modern electronics. We plan to pursue four research projects, organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration.</p>
+      <p class="section-lead" data-en="As ATTS Lab is in its founding stage, the four projects below outline our planned research roadmap, set to launch sequentially as the lab grows. Together they integrate material innovation with system co-design to address the growing thermal challenges in modern electronics — organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration." data-ko="ATTS Lab은 출범 초기 단계로, 아래 네 개의 프로젝트는 연구실 성장에 맞춰 순차적으로 진행될 계획입니다. 재료 혁신과 시스템 공동설계를 결합해 현대 전자기기의 열관리 문제를 해결하고자 하며, AI 기반 설계, 차세대 냉각 솔루션, 시스템 통합이라는 세 가지 상호보완적 연구 축 아래에서 추진합니다.">As ATTS Lab is in its founding stage, the four projects below outline our planned research roadmap, set to launch sequentially as the lab grows. Together they integrate material innovation with system co-design to address the growing thermal challenges in modern electronics — organized under three complementary thrusts spanning AI-enabled design, novel cooling solutions, and system-level integration.</p>
     </div>
 
     <div class="vision-card">
@@ -1501,6 +1738,15 @@
         <div class="overview-num">// 04</div>
         <div class="overview-title" data-en="Why It Matters" data-ko="왜 중요한가">Why It Matters</div>
         <div class="overview-text" data-en-html="From data centers consuming gigawatts to EVs that must pass safety tests, &lt;strong&gt;thermal limits define what's possible&lt;/strong&gt;. Better transient cooling enables denser, faster, and more reliable electronics — at lower energy cost." data-ko-html="기가와트급 전력을 소모하는 데이터센터부터 안전 기준을 통과해야 하는 전기차까지, &lt;strong&gt;열한계가 곧 기술의 한계&lt;/strong&gt;가 되고 있습니다. 더 나은 과도 냉각 기술은 더 집적된, 더 빠른, 더 신뢰할 수 있는 전자기기를, 그것도 더 적은 에너지로 가능하게 합니다.">From data centers consuming gigawatts to EVs that must pass safety tests, <strong>thermal limits define what's possible</strong>. Better transient cooling enables denser, faster, and more reliable electronics — at lower energy cost.</div>
+      </div>
+    </div>
+
+    <!-- ============ ROADMAP STATUS NOTE ============ -->
+    <div class="roadmap-note">
+      <div class="roadmap-note-icon">i</div>
+      <div class="roadmap-note-content">
+        <div class="roadmap-note-label" data-en="// Research Roadmap" data-ko="// 연구 로드맵">// Research Roadmap</div>
+        <div class="roadmap-note-text" data-en-html="The four projects below outline a &lt;strong&gt;planned research roadmap&lt;/strong&gt; for ATTS Lab. As a newly-launched lab, these projects have not yet begun — they will be initiated &lt;strong&gt;sequentially&lt;/strong&gt; as the lab grows, secures funding, and recruits students." data-ko-html="아래 네 개의 프로젝트는 ATTS Lab의 &lt;strong&gt;연구 로드맵&lt;/strong&gt;입니다. 갓 출범한 연구실인 만큼 아직 본격적으로 시작되지는 않았으며, 연구실의 성장, 연구비 확보, 학생 모집 상황에 따라 &lt;strong&gt;순차적으로&lt;/strong&gt; 추진될 예정입니다.">The four projects below outline a <strong>planned research roadmap</strong> for ATTS Lab. As a newly-launched lab, these projects have not yet begun — they will be initiated <strong>sequentially</strong> as the lab grows, secures funding, and recruits students.</div>
       </div>
     </div>
 
@@ -1771,7 +2017,7 @@
     <div class="section-header">
       <div class="eyebrow" data-en="// 03 — Publications" data-ko="// 03 — 논문">// 03 — Publications</div>
       <h2 data-en="Peer-reviewed publications." data-ko="Peer-reviewed publications.">Peer-reviewed publications.</h2>
-      <p class="section-lead" data-en="Selected journal articles in heat transfer and phase change materials. For the most up-to-date list and citation metrics, please visit Google Scholar." data-ko="열전달과 상변화물질 분야에서 발표한 주요 저널 논문 목록입니다. 최신 목록과 인용 지표는 Google Scholar에서 확인하실 수 있습니다.">Selected journal articles in heat transfer and phase change materials. For the most up-to-date list and citation metrics, please visit Google Scholar.</p>
+      <p class="section-lead" data-en-html="Selected journal articles in heat transfer and phase change materials. For the most up-to-date list and citation metrics, please visit &lt;a href=&quot;https://scholar.google.com/citations?user=-PKWrsMAAAAJ&amp;hl=en&amp;oi=ao&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Google Scholar&lt;/a&gt;." data-ko-html="열전달과 상변화물질 분야에서 발표한 주요 저널 논문 목록입니다. 최신 목록과 인용 지표는 &lt;a href=&quot;https://scholar.google.com/citations?user=-PKWrsMAAAAJ&amp;hl=en&amp;oi=ao&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Google Scholar&lt;/a&gt;에서 확인하실 수 있습니다.">Selected journal articles in heat transfer and phase change materials. For the most up-to-date list and citation metrics, please visit <a href="https://scholar.google.com/citations?user=-PKWrsMAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>.</p>
     </div>
 
     <div class="pub-actions">
@@ -2058,7 +2304,7 @@
     <div class="footer-col">
       <h4 data-en="Lab" data-ko="연구실">Lab</h4>
       <ul>
-        <li><a href="#about" data-en="About" data-ko="소개">About</a></li>
+        <li><a href="#about" data-en="People" data-ko="구성원">People</a></li>
         <li><a href="#research" data-en="Research" data-ko="연구">Research</a></li>
         <li><a href="#publications" data-en="Publications" data-ko="논문">Publications</a></li>
         <li><a href="#news" data-en="News" data-ko="소식">News</a></li>
