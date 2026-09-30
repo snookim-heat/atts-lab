@@ -429,16 +429,17 @@
   }
   .students-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 640px;
   }
   .student-card{
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--r-md);
-    padding: 22px;
+    padding: 16px 20px;
     transition: all 0.25s;
-    text-align: center;
+    text-align: left;
   }
   .student-card:hover{
     border-color: rgba(220,38,38,0.3);
@@ -466,6 +467,10 @@
     color: var(--text);
     margin-bottom: 2px;
     letter-spacing: -0.01em;
+  }
+  .student-affiliation{
+    font-size: 13px;
+    color: var(--text-muted);
   }
   .student-name-kr{
     font-size: 13px;
@@ -1687,15 +1692,19 @@
       <div class="students-grid">
         <div class="student-card">
           <div class="student-name">김강산</div>
+          <div class="student-affiliation" data-en="Mechanical Engineering" data-ko="기계공학부">Mechanical Engineering</div>
         </div>
         <div class="student-card">
           <div class="student-name">양태민</div>
+          <div class="student-affiliation" data-en="Mechanical Engineering" data-ko="기계공학부">Mechanical Engineering</div>
         </div>
         <div class="student-card">
           <div class="student-name">여준석</div>
+          <div class="student-affiliation" data-en="Mechanical Engineering" data-ko="기계공학부">Mechanical Engineering</div>
         </div>
         <div class="student-card">
           <div class="student-name">장지엽</div>
+          <div class="student-affiliation" data-en="Mechanical Engineering" data-ko="기계공학부">Mechanical Engineering</div>
         </div>
       </div>
     </div>
