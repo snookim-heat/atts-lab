@@ -421,6 +421,12 @@
   }
 
   /* Student cards grid */
+  .student-group-title{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 16px;
+  }
   .students-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -1677,28 +1683,21 @@
         <h3 class="subsection-title" data-en="Students &amp; Researchers" data-ko="학생 및 연구원">Students &amp; Researchers</h3>
       </div>
 
-      <!-- When students join, replace this placeholder with a .students-grid containing .student-card elements -->
-      <div class="students-placeholder">
-        <div class="students-placeholder-icon">◌</div>
-        <div class="students-placeholder-title" data-en="Recruiting our founding members" data-ko="창립 멤버를 모집하고 있습니다">Recruiting our founding members</div>
-        <div class="students-placeholder-text" data-en-html="ATTS Lab is actively recruiting Ph.D., M.S., and undergraduate researchers. If you're excited about thermal systems and want to be part of building this lab from the ground up, &lt;a href=&quot;#join&quot;&gt;reach out&lt;/a&gt;." data-ko-html="ATTS Lab은 박사·석사·학부 연구생을 적극적으로 모집하고 있습니다. 열시스템에 대한 열정과 함께 새로운 연구실을 처음부터 함께 만들어 갈 분이라면, &lt;a href=&quot;#join&quot;&gt;언제든 연락 주세요&lt;/a&gt;.">ATTS Lab is actively recruiting Ph.D., M.S., and undergraduate researchers. If you're excited about thermal systems and want to be part of building this lab from the ground up, <a href="#join">reach out</a>.</div>
-      </div>
-
-      <!--
-      EXAMPLE STUDENT CARD STRUCTURE - to add a student, copy and customize:
-
+      <h4 class="student-group-title" data-en="Undergraduate Researchers" data-ko="학부연구생">Undergraduate Researchers</h4>
       <div class="students-grid">
         <div class="student-card">
-          <div class="student-photo">
-            <img src="student-name.jpg" alt="Student Name"/>
-          </div>
-          <div class="student-name">John Doe</div>
-          <div class="student-name-kr">홍길동</div>
-          <div class="student-role" data-en="Ph.D. Student" data-ko="박사 과정">Ph.D. Student</div>
-          <div class="student-topic" data-en="Dynamic PCM cooling systems" data-ko="동적 PCM 냉각 시스템">Dynamic PCM cooling systems</div>
+          <div class="student-name">김강산</div>
+        </div>
+        <div class="student-card">
+          <div class="student-name">양태민</div>
+        </div>
+        <div class="student-card">
+          <div class="student-name">여준석</div>
+        </div>
+        <div class="student-card">
+          <div class="student-name">장지엽</div>
         </div>
       </div>
-      -->
     </div>
     <!-- ============ /STUDENTS SUBSECTION ============ -->
 
